@@ -1,3 +1,4 @@
 .idea
 _build
 training_venv
+*.log
