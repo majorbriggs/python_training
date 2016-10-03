@@ -14,6 +14,7 @@ Contents:
    todo
    environment
    project_structure
+   logging
 
 Indices and tables
 ==================

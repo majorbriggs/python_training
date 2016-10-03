@@ -20,12 +20,6 @@ TODO
     - Real life examples (?)
     - Bonus: ReDoS, evil RegExes
 
-#. logging
-    - basic logging setup
-    - logging to files / and stdout
-    - rotating log file
-    - logging from multiple modules
-
 #. Requests
 
 #. APIs and JSON/XML format
