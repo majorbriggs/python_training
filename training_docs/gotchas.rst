@@ -6,6 +6,8 @@ Situations where Python way of doing things is not what we may expect
 Mutable default arguments
 --------------------------
 
+The most common and controversial example of an 'unusual' behavior of Python is how default mutable arguments are evaluated.
+
 What are mutable and immutable objects
 +++++++++++++++++++++++++++++++++++++++++
 
@@ -37,8 +39,6 @@ Mutable:
 
 Mutable object as default function argument
 +++++++++++++++++++++++++++++++++++++++++++++++
-
-The most common and controversial example of an 'unusual' behavior of Python is how default mutable arguments are evaluated.
 
 Consider the following function
 
@@ -125,22 +125,24 @@ Read more on `Python Conquers The Universe <https://pythonconquerstheuniverse.wo
 Boolean expressions and logical operators
 -----------------------------------------------
 
+Boolean operations do not return only True or False values. To get the concept, let's consider what Python considers to by a "truth".
+
 Testing for Truth value
 ++++++++++++++++++++++++++++
 
 In python, every object can have a "truth" value assigned and therefore be used in ``if`` statements, ``while`` loops and boolean operations:
 
 The values considered false are:
-- ``None``
-- False
-- Zero of any numeric type (int, float, complex)
-- Empty sequences (lists, tuples, sets)
-- Empty dicts
-- instances of user-defined classes, if the class defines a __nonzero__() or __len__() method, when that method returns the integer zero or bool value False
+    - ``None``
+    - ``False``
+    - Zero of any numeric type (int, float, complex)
+    - Empty sequences (lists, tuples, sets)
+    - Empty dicts
+    - instances of user-defined classes, if the class defines a ``__nonzero__()`` or ``__len__()`` method, when that method returns the integer zero or bool value False
 
 All other values are considered true.
 
-That is why it's possible (and also considered to be a good practice) to use this language feature in the truth tests like:
+That is why it's possible (and also considered to be a good practice) to use this language feature in the truth tests like so:
 
 .. code-block:: python
 
@@ -149,7 +151,7 @@ That is why it's possible (and also considered to be a good practice) to use thi
     if some_string:
         print('The string is not empty')
 
-Instead of
+Instead of testing the condition explicitly, which is in this case superfluous.
 
 .. code-block:: python
 
