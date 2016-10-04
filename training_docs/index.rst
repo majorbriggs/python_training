@@ -15,6 +15,7 @@ Contents:
    environment
    project_structure
    logging
+   gotchas
 
 Indices and tables
 ==================
