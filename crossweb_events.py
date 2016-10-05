@@ -73,7 +73,7 @@ def synchronize_calendar():
     LOGGER.info('{} items found on crossweb'.format(len(existing_events)))
     for e in get_list_of_events():
         if e not in existing_events:
-            LOGGER.info('Adding new event {}'.format(e.title.encode("utf-8")))
+            LOGGER.info(u'Adding new event {}'.format(e.title))
             add_event(e)
 
 if __name__ == "__main__":
