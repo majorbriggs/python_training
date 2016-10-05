@@ -1,7 +1,6 @@
 from __future__ import print_function
 import httplib2
 import os
-
 from apiclient import discovery
 import oauth2client
 from oauth2client import client
@@ -14,6 +13,8 @@ try:
     flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
 except ImportError:
     flags = None
+
+
 
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/calendar-python-quickstart.json
@@ -50,38 +51,22 @@ def get_credentials():
         print('Storing credentials to ' + credential_path)
     return credentials
 
-def add_event():
+def get_calendar_service():
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
-    service = discovery.build('calendar', 'v3', http=http)
-    start = datetime.datetime.utcnow()
-    delta = datetime.timedelta(hours=1)
-    end = start + delta
-    startdate = start.isoformat() + 'Z'  # 'Z' indicates UTC time
-    enddate = end.isoformat() + 'Z'  # 'Z' indicates UTC time
-    event = {
-            "summary": "Test Event",
-            "start": {"dateTime": startdate},
-            "end": {"dateTime": enddate}
-            }
+    return discovery.build('calendar', 'v3', http=http)
 
-    service.events().insert(calendarId='primary', body=event).execute()
-    pass
-
-
-
-
-def main():
-    credentials = get_credentials()
-    http = credentials.authorize(httplib2.Http())
-    service = discovery.build('calendar', 'v3', http=http)
-
-    now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-    print('Getting the upcoming 10 events')
+def get_upcoming_events():
+    service = get_calendar_service()
+    now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
+    print('Getting the upcoming 100 events')
     eventsResult = service.events().list(
-        calendarId='primary', timeMin=now, maxResults=10, singleEvents=True,
+        calendarId='primary', timeMin=now, maxResults=100, singleEvents=True,
         orderBy='startTime').execute()
-    events = eventsResult.get('items', [])
+    return eventsResult.get('items', [])
+
+def print_upcoming_events():
+    events = get_upcoming_events()
 
     if not events:
         print('No upcoming events found.')
@@ -89,8 +74,11 @@ def main():
         start = event['start'].get('dateTime', event['start'].get('date'))
         print(start, event['summary'])
 
+def clear_calendar():
+    service = get_calendar_service()
+    service.calendars().clear(calendarId='primary').execute()
 
 if __name__ == '__main__':
-    add_event()
-    main()
-    pass
+    print_upcoming_events()
+    clear_calendar()
+    print_upcoming_events()
