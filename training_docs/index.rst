@@ -16,6 +16,7 @@ Contents:
    project_structure
    logging
    gotchas
+   regular_expressions
 
 Indices and tables
 ==================
