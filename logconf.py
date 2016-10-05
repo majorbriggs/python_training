@@ -2,12 +2,14 @@
 Root LOGGER configuration
 """
 import logging
+from logging.handlers import RotatingFileHandler
 
 # create a LOGGER
 LOGGER = logging.getLogger() # root logger
 LOGGER.setLevel(logging.DEBUG)
 # create file handler which logs even debug messages
-fh = logging.FileHandler('logfile.log', encoding='utf-8')
+fh = RotatingFileHandler(
+              'logfile.log', maxBytes=10000, backupCount=1, encoding='utf-8')
 fh.setLevel(logging.DEBUG)
 # create console handler with a higher log level
 ch = logging.StreamHandler()

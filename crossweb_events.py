@@ -10,8 +10,9 @@ import logconf
 
 LOGGER = logging.getLogger(__name__)
 
-Event = namedtuple("Event", ['title', 'date', 'topic', 'type', 'paid'])
-url = "http://crossweb.pl/wydarzenia/?miasto=trojmiasto"
+Event = namedtuple("Event", ['title', 'date', 'date_str', 'topic', 'type', 'paid'])
+URL = "http://crossweb.pl/wydarzenia/?miasto=trojmiasto"
+DATE_FORMAT = '%a %d/%m/%Y'
 
 def add_event(event):
     service = get_calendar_service()
@@ -36,12 +37,12 @@ def get_existing_events():
         date = datetime.datetime.strptime(date_str, '%Y-%m-%d')
         title = event['summary']
         topic, type, paid = description_regex.search(event['description']).groups()
-        e = Event(title=title, date=date, topic=topic, type=type, paid=paid)
+        e = Event(title=title, date=date, date_str=date.strftime(DATE_FORMAT), topic=topic, type=type, paid=paid)
         event_tuples.append(e)
     return event_tuples
 
 def get_events_elements():
-    response = requests.get(url)
+    response = requests.get(URL)
     bs = BeautifulSoup(response.text, "html.parser")
     future_events = []
     event_list = bs.find('div', attrs={'id': 'eventList'})
@@ -63,8 +64,8 @@ def get_list_of_events():
         title = e.find('div', class_='title').text.strip()
         topic = e.find('div', class_='topic').text
         type = e.find('div',  class_='type').text
-        paid = 'No' if e.find('div',  class_='cost').text == 'Bezpłatny' else 'Yes'
-        events.append(Event(title=title, date=date, topic=topic, type=type, paid=paid))
+        paid = 'Bezpłatny' if e.find('div',  class_='cost').text == 'Bezpłatny' else 'Płatny'
+        events.append(Event(title=title, date=date, date_str=date.strftime(DATE_FORMAT), topic=topic, type=type, paid=paid))
     return events
 
 

@@ -156,3 +156,6 @@ Example from `Python Logging Cookbook <https://docs.python.org/2/howto/logging-c
 
     for filename in logfiles:
         print(filename)
+
+
+See also :py:class:`logging.handlers.RotatingFileHandler` for file rotating based on time, the not size of the log.

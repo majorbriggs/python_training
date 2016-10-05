@@ -1,7 +1,7 @@
 import glob
 import logging.handlers
 
-LOG_FILENAME = 'logging_rotatingfile_example.out'
+LOG_FILENAME = 'logging_rotatingfile_example.log'
 
 # Set up a specific logger with our desired output level
 my_logger = logging.getLogger('MyLogger')

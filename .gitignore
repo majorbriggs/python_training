@@ -2,3 +2,5 @@
 _build
 training_venv
 *.log
+*.log.?
+output.html

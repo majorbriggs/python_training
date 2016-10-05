@@ -2,15 +2,39 @@ Regular expressions
 =========================
 
 
-Introductions
+Introduction
 ---------------------------
 
 
-Useful tips
----------------------------
+Compiled regular expressions vs module-level functions
+------------------------------------------------------
+
+You can use most of the regex operations in two ways
+
+- as module-level functions of :py:mod:`re` module
+
+.. code-block:: python
+
+    def find_matching_message(pattern, list_of_messages):
+        for message in list_of_messages:
+            if re.search(pattern, message):  # re.search will compile the regex on each iteration
+                return message
+
+- or methods on `compiled regular expression objects <https://docs.python.org/3.5/library/re.html#regular-expression-objects>`_ created with :py:func:`re.compile`
+
+.. code-block:: python
+
+    def find_matching_message(pattern, list_of_messages):
+        my_regex = re.compile(pattern)
+        for message in list_of_messages:
+            if my_regex.search(message):
+                return message
+
+For the sake of clarity and also some performance advantage, if the regex is going to be used multiple times,
+the second method (compile) is preferred.
 
 Use ``groups()`` and unpacking to get multiple parts of the match
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------------------------------------
 
 Assume that you have to process messages of the following structure
 
@@ -37,7 +61,25 @@ You can also access them separately with
 
     title = message_pattern.search(message).group(1)  # group indexing starts from 1
 
-Python online checker
-+++++++++++++++++++++++
 
-Use `Regex101 <https://regex101.com/>`_ for regex debugging. (with Python specific interpreter)
+Use :py:func:`re.findall` to get a list of all matches
+------------------------------------------------------
+
+
+:py:func:`re.findall` returns a list of all matches within the string (does not stop on the first one).
+If the pattern has more groups, it returns a list of tuples with each tuple containing the groups of the given match.
+
+
+
+Python online checker
+---------------------------
+
+Use `Regex101 <https://regex101.com/>`_ for debugging. (offers a Python specific interpreter)
+
+
+
+Further reading
+---------------------------
+
+For a more detailed introduction, read the excellent chapter on Python regular expressions in
+`Automate the Boring Stuff with Python <https://automatetheboringstuff.com/chapter7/>`_

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<link rel=stylesheet type=text/css href="static/style.css">
+<body>
+
+<div class="table-title">
+<h3>Events</h3>
+</div>
+
+<table class="table-fill">
+<!--<thead>
+<tr>
+{% for column in header %}
+<th class="text-left">{{column}}</th>
+{% endfor %}
+</tr>
+</thead>-->
+<tbody class="table-hover">
+{% for item in items %}
+<tr>
+<td class="text-left">{{item.date_str}}</td>
+<td class="text-left">{{item.title}}</td>
+<td class="text-left">{{item.topic}}</td>
+<td class="text-left">{{item.type}}</td>
+<td class="text-left">{{item.paid}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+</body>
+</html>
