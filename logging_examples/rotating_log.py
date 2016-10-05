@@ -1,5 +1,4 @@
 import glob
-import logging
 import logging.handlers
 
 LOG_FILENAME = 'logging_rotatingfile_example.out'
