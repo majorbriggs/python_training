@@ -309,7 +309,8 @@ man_pages = [
 # If true, show URL addresses after external links.
 #
 # man_show_urls = False
-intersphinx_mapping = {'python': ('https://docs.python.org/3.5', None)}
+intersphinx_mapping = {'python': ('https://docs.python.org/3.5', None),
+                       'requests': ('http://docs.python-requests.org/en/master/', None)}
 
 # -- Options for Texinfo output -------------------------------------------
 

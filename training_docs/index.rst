@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to AF/P-Q Python Intermediate Training!
-===========================================
+==========================================================
 
 Contents:
 
@@ -17,6 +17,7 @@ Contents:
    logging
    gotchas
    regular_expressions
+   requests
 
 Indices and tables
 ==================
