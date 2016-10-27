@@ -157,6 +157,7 @@ You can store them temporarily in an external module and import to your script a
 Bonus excercise: store them in an encoded form (using e.g. :py:func:`base64.b64encode` and :py:func:`base64.b64decode`)
 Don't forget to delete the sensitive data after the exercise:)
 
+:ref:`RE00_solution`
 
 Request parameters
 ++++++++++++++++++++++++++++
@@ -281,20 +282,8 @@ ____________________________
 By combining the original query that checks if the user exists with the additional condition on the password, we can create an injection that will result in the text "This user exists"
 displayed only if the user exists AND its password starts with the given letter.
 
-Try to form the query on your own before going for the solution.
+Try to form the query on your own before going for the :ref:`RE01_solution`.
 
-
-The user input that would escape the original query, and add the additional condition on the password is (for the first letter assumed to be "A"):
-
-.. code-block:: sql
-
-    'natas16" AND password LIKE BINARY "A%'
-
-The full query will have then the form
-
-.. code-block:: sql
-
-    SELECT * from users where username="natas16" AND password LIKE BINARY "A%"
 
 
 Tasks

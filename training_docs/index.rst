@@ -18,6 +18,7 @@ Contents:
    gotchas
    regular_expressions
    requests
+   solutions
 
 Indices and tables
 ==================
