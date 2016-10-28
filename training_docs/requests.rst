@@ -96,7 +96,7 @@ Status code of a response is a 3-digit integer, where the first digit indicates 
 Successful requests have typically the status code 200, the status 404 indicates that the requested resource has not been found.
 
 
-:py:mod:`requests` module for Python
+:py:mod:`requests` module
 ----------------------------------------
 
 To work with HTTP requests we will use the third-party library :py:mod:`requests`.
@@ -296,3 +296,49 @@ ____________
 #. After each request check if the response contains the expected text, "This user exists."
 #. If a single check is successful, move on trying to guess the next letter.
 #. Print the whole password on the screen and try to login to the next level.
+
+
+Excercise RE02: Brute force attack on session id
+--------------------------------------------------------------
+
+This example is another level from natas wargame.
+In this excercise we will hijack a session by executing a brute force attack on the session id.
+
+We assume that on the server there already exists an authenticated admin session and once we send a request with its id, the password to the next level will be revealed.
+
+
+What is a session ID?
++++++++++++++++++++++++++++
+
+A session ID in network communication is a piece of data used to identify a series of related message exchanges between the client and the server.
+A Session ID is used to identify a logged in user and thus, when stolen, can be used to obtain the user's privileges.
+In real systems, session ids are long, randomly generated values to prevent session hijacking by guessing or brute force attacks.
+
+However in this excercise we will simulate an attack on a website that grants session ids as random numbers from a very limited pool.
+
+In PHP session id is stored read from a cookie value PHPSESSID.
+
+To send a cookie with :py:mod:`requests`, use cookies parameter:
+
+.. code-block:: python
+
+    import requests
+
+    # (...)
+
+    requests.post(URL, cookies={'cookie_name', 'cookie_value'})
+
+Tasks
+______
+
+level: http://natas18.natas.labs.overthewire.org
+
+username: natas18
+
+password: xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP
+
+#. Open natas18 in the browser, examine the webpage, check the source and see what data is exchanged with the server (by looking at the name of the input field in the page source)
+#. Use Python requests to send a request to the website and print the response
+#. Brute force the session id by sending requests with different values of the cookie, assume that the PHPSESSID value is an integer.
+#. Look for a response that reveals the password. Assume that you know that the password is a 32 characters long string of numbers and letters
+#. Extract the password from the response and print it on the screen (use regular expressions!)
