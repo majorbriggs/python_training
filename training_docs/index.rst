@@ -14,6 +14,7 @@ Contents:
    todo
    environment
    project_structure
+   files
    logging
    gotchas
    regular_expressions

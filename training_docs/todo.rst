@@ -1,19 +1,9 @@
 TODO
 ===============
 
-#. Working with files:
-    - with open(...) as f:
-    - os.path
-    - __file__
-
 #. Regular expressions
-    - match(), group(), multiple groups
-    - re.sub
-    - reference to ATBSWP
     - Real life examples (?)
     - Bonus: ReDoS, evil RegExes
-
-#. Requests
 
 #. APIs and JSON/XML format
     - Google Maps? Twitter?

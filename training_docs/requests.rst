@@ -147,17 +147,7 @@ Authentication
     r = requests.get(URL, auth=auth, params=payload)
 
 
-Excercise RE00
-____________________
-
-Send a GET request to one of LSYP intranet pages. Use HTTPBasicAuth object to to provide your credentials.
-
-You can store them temporarily in an external module and import to your script as variables.
-
-Bonus excercise: store them in an encoded form (using e.g. :py:func:`base64.b64encode` and :py:func:`base64.b64decode`)
-Don't forget to delete the sensitive data after the exercise:)
-
-:ref:`RE00_solution`
+Go to :ref:`req00`
 
 Request parameters
 ++++++++++++++++++++++++++++
@@ -183,8 +173,24 @@ You can generate a corresponding request by using POST method with username and 
     my_params = {'username':'my_username', 'password':'my_password'}
     r = requests.post(URL, params=my_params)
 
-Excercise RE01: Exploiting a Blind SQL Injection vulnerability
---------------------------------------------------------------
+.. _req00:
+
+Excercise REQ00: Basic HTTP Authentication
+--------------------------------------------------
+
+Tasks
+++++++++
+
+#. Send a GET request to one of LSYP intranet pages. Use HTTPBasicAuth object to to provide your credentials.
+#. You can store them temporarily in an external module and import to your script as variables.
+
+Bonus excercise: store username and password in an encoded form (using e.g. :py:func:`base64.b64encode` and :py:func:`base64.b64decode`)
+Don't forget to delete the sensitive data after the exercise:)
+
+:ref:`REQ00_solution`
+
+Excercise REQ01: Exploiting a Blind SQL Injection vulnerability
+---------------------------------------------------------------------------
 
 The service http://overthewire.org/wargames/ offers a large set of so called wargames, i.e. challenges that help you to learn and practice various IT-security concepts.
 
@@ -282,13 +288,9 @@ ____________________________
 By combining the original query that checks if the user exists with the additional condition on the password, we can create an injection that will result in the text "This user exists"
 displayed only if the user exists AND its password starts with the given letter.
 
-Try to form the query on your own before going for the :ref:`RE01_solution`.
-
-
 
 Tasks
-____________
-
++++++++++++++
 
 #. Write a Python script that will find the password for the user natas16
 #. Assume that the password is 32 characters long and contains numbers and upper and lower case letters.
@@ -298,7 +300,7 @@ ____________
 #. Print the whole password on the screen and try to login to the next level.
 
 
-Excercise RE02: Brute force attack on session id
+Excercise REQ02: Brute force attack on session id
 --------------------------------------------------------------
 
 This example is another level from natas wargame.
@@ -316,7 +318,7 @@ In real systems, session ids are long, randomly generated values to prevent sess
 
 However in this excercise we will simulate an attack on a website that grants session ids as random numbers from a very limited pool.
 
-In PHP session id is stored read from a cookie value PHPSESSID.
+In PHP session id is stored read from a cookie value ``PHPSESSID``.
 
 To send a cookie with :py:mod:`requests`, use cookies parameter:
 
@@ -329,16 +331,18 @@ To send a cookie with :py:mod:`requests`, use cookies parameter:
     requests.post(URL, cookies={'cookie_name', 'cookie_value'})
 
 Tasks
-______
+++++++++++
 
 level: http://natas18.natas.labs.overthewire.org
 
-username: natas18
+``username: natas18``
 
-password: xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP
+``password: xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP``
 
-#. Open natas18 in the browser, examine the webpage, check the source and see what data is exchanged with the server (by looking at the name of the input field in the page source)
+#. Open ``natas18`` in the browser, examine the webpage, check the source and see what data is exchanged with the server (by looking at the name of the input field in the page source)
 #. Use Python requests to send a request to the website and print the response
-#. Brute force the session id by sending requests with different values of the cookie, assume that the PHPSESSID value is an integer.
+#. Brute force the session id by sending requests with different values of the cookie, assume that the ``PHPSESSID`` value is an integer.
 #. Look for a response that reveals the password. Assume that you know that the password is a 32 characters long string of numbers and letters
 #. Extract the password from the response and print it on the screen (use regular expressions!)
+
+:ref:`REQ02_solution`

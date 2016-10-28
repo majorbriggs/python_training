@@ -1,13 +1,31 @@
 Solutions
 ======================================================
 
-Requests
------------------------
 
-.. _RE00_solution:
+.. _FIL00_solution:
 
-Solution to RE00
-++++++++++++++++++++++++++++
+Solution to FIL00
+-----------------------------
+
+Working script
+____________________________
+
+.. code-block:: python
+
+    import random
+
+    with open('input.txt', 'w') as f:
+        for i in range(10):
+            f.write(str(random.randint(1, 10)) + '\n')
+
+    with open('input.txt') as f_in, open('output.txt', 'w') as f_out:
+        for l in f_in:
+            f_out.write(int(l)*"X" + '\n')
+
+.. _REQ00_solution:
+
+Solution to REQ00
+-----------------------------
 
 Working script
 ____________________________
@@ -25,10 +43,10 @@ ____________________________
 
     print(r.status_code)
 
-.. _RE01_solution:
+.. _REQ01_solution:
 
-Solution to RE01
-++++++++++++++++++++++++++++
+Solution to REQ01
+-----------------------------
 
 Malicious query
 ____________________________
@@ -75,8 +93,10 @@ ____________________________
 
     print("Password found {}".format(letters))
 
-Solution to RE02
-++++++++++++++++++++++++++++
+.. _REQ02_solution:
+
+Solution to REQ02
+-----------------------------
 
 Working script
 ____________________________
