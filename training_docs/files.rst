@@ -20,7 +20,7 @@ By default, the file is open in read mode AND has to be closed after usage with
     f.close()
 
 
-It is good practice to use the :py:keyword:`with` keyword when dealing with file objects. This has the advantage that the file is properly closed after its suite finishes, even if an exception is raised on the way.
+It is good practice to use the :py:keyword:`with` keyword when using file objects. This has the advantage that the file is properly closed after its suite finishes, even if an exception is raised on the way.
 
 .. code-block:: python
 
@@ -28,13 +28,11 @@ It is good practice to use the :py:keyword:`with` keyword when dealing with file
         x = f_in.read()
         # do some operations
 
-    # no need for f_in.close() statement, it's executed automatically on leaving the with block
+    # no need for f_in.close() statement, it's executed automatically on leaving 'the' with block
 
 
-open() parameters
-++++++++++++++++++++
-
-From Python docs:
+Arguments of ``open()`` function
++++++++++++++++++++++++++++++++++++++++
 
 The first argument is a string containing the filename.
 The second argument is another string containing a few characters describing the way in which the file will be used.
@@ -83,6 +81,19 @@ In such cases, the module :py:mod:`os.path` comes in handy. Here are some functi
 :py:func:`os.path.abspath` returns the absolute path of a file given with a relative path
 
 :py:func:`os.path.dirname` returns the path to directory of a filename given as argument
+
+
+Iterating over a file
+---------------------------
+
+Use ``for`` loop to iterate over the lines of a file:
+
+.. code-block:: python
+
+    with open('input.txt') as f:
+        for line in f:
+            if "some string" in line:
+                print(line)
 
 
 .. _FIL00:

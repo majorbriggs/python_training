@@ -7,7 +7,7 @@ Modules
 A module is a file containing Python code. A a module can be imported into other modules with the :py:keyword:`import`
 The module name is available within the module as a :py:data:`__main__`
 
-The :command:`if __name__ == '__main__'` section
+The ``if __name__ == '__main__'`` section
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 You will often see the main part of a script enclosed in such if block.

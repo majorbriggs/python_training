@@ -33,7 +33,7 @@ You can use most of the regex operations in two ways
 For the sake of clarity and also some performance advantage, if the regex is going to be used multiple times,
 the second method (compile) is preferred.
 
-Use ``groups()`` and unpacking to get multiple parts of the match
+Using ``groups()`` and unpacking to get multiple parts of the match
 ------------------------------------------------------------------------
 
 Assume that you have to process messages of the following structure
@@ -62,8 +62,8 @@ You can also access them separately with
     title = message_pattern.search(message).group(1)  # group indexing starts from 1
 
 
-Use :py:func:`re.findall` to get a list of all matches
-------------------------------------------------------
+Using :py:func:`re.findall` to get a list of all matches
+-----------------------------------------------------------------
 
 
 :py:func:`re.findall` returns a list of all matches within the string (does not stop on the first one).

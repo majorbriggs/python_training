@@ -1,6 +1,24 @@
 Environment configuration
 ===========================================
 
+We start with setting up a development environment, installation of third part libraries and virtual environments.
+
+
+Setting environment variables
+---------------------------------
+
+In case you have multiple versions of python installed alongside, make sure you know which interpreter is started by ``python`` command.
+
+On Linux systems, where both versions of Python are pre-installed by default, ``python`` command starts the system Python2.x and ``python3`` the 3.x version respectively.
+
+By default, the python directory should be added to the system ``PATH`` variable.
+Test it by running command line and typing ``python``
+
+If you have both 2.x and 3.x, you can choose the version to run by typing:
+
+- ``py -2`` for Python 2.x
+- ``py -3`` for Python 3.x
+
 PyCharm Git setup
 -------------------
 - Create a new Git repostory for the project files on GitHub or `LHSY GitBucket <http://git.dev.lsy.pl>`_
@@ -55,6 +73,8 @@ Installing packages into the virtual environment
 Working with virtualenv outside of IDE
 ++++++++++++++++++++++++++++++++++++++++++
 
+
+
 - Go to the location of your new virtual environment and open the command window there (Shift+Right click -> Open command window here)
 
 .. image:: img\run_cmd_here.png
@@ -83,21 +103,30 @@ The basic command to install a package is:
 
 .. code-block:: bat
 
-    python -m pip install name_of_the_package
+    pip3 install name_of_the_package
 
 You can also:
 
 .. code-block:: bat
 
-    python -m pip uninstall name_of_the_package
+    pip3 uninstall name_of_the_package
 
 or:
 
 .. code-block:: bat
 
-    python -m pip install --upgrade name_of_the_package
+    pip3 install --upgrade name_of_the_package
+
+Use ``pip`` for Python2.x (if Python2 is installed and its directory is in PATH)
+
 
 PyCharm also uses pip to install additional packages in the Project Interpeter settings window.
+
+
+pip in virtual environments
++++++++++++++++++++++++++++++++++
+
+To install libraries in a selected virtualenv only, you must activate it first with ``{venv_directory}\\Scripts\\activate.bat``
 
 requirements.txt file
 ++++++++++++++++++++++++++
@@ -109,15 +138,15 @@ To install all requirements listed in the file use:
 
 .. code-block:: bat
 
-    python -m pip install -r requirements.txt
+    pip3 install -r requirements.txt
 
 
 The file can be created with the freeze command like so:
 
 .. code-block:: bat
 
-    python -m pip freeze > requirements.txt
-    python -m pip install -r requirements.txt
+    pip3 freeze > requirements.txt
+    pip3 install -r requirements.txt
 
 
 See `Requirements Files Format <https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format>`_ for details on the syntax.

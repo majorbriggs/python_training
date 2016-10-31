@@ -11,15 +11,17 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   todo
+   intro
    environment
    project_structure
+   strings
    files
    logging
-   gotchas
    regular_expressions
    requests
+   gotchas
    solutions
+   todo
 
 Indices and tables
 ==================
