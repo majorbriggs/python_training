@@ -16,9 +16,10 @@ Contents:
    project_structure
    strings
    files
-   logging
    regular_expressions
    requests
+   arguments
+   logging
    gotchas
    solutions
    todo

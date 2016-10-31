@@ -1,10 +1,6 @@
 TODO
 ===============
 
-#. Regular expressions
-    - Real life examples (?)
-    - Bonus: ReDoS, evil RegExes
-
 #. APIs and JSON/XML format
     - Google Maps? Twitter?
 
