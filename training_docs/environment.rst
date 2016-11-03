@@ -14,10 +14,23 @@ On Linux systems, where both versions of Python are pre-installed by default, ``
 By default, the python directory should be added to the system ``PATH`` variable.
 Test it by running command line and typing ``python``
 
-If you have both 2.x and 3.x, you can choose the version to run by typing:
 
-- ``py -2`` for Python 2.x
-- ``py -3`` for Python 3.x
+.. tip::
+
+    If you have both 2.x and 3.x installed, you can choose the version to run by typing:
+
+    - ``py -2`` for Python 2.x
+    - ``py -3`` for Python 3.x
+
+
+If after typing ``python`` in the command line, you get the error:
+
+.. code-block:: none
+
+    'python' is not recognized as an internal or external command, operable program or batch file.
+
+add to the user or system ``PATH`` variable the correct paths to Python and Python\\Scripts directories (e.g. ``C:\Python35-32\Scripts\;C:\Python35-32\``)
+
 
 PyCharm Git setup
 -------------------
@@ -122,6 +135,8 @@ Use ``pip`` for Python2.x (if Python2 is installed and its directory is in PATH)
 
 PyCharm also uses pip to install additional packages in the Project Interpeter settings window.
 
+.. tip::
+    If ``pip3`` is not recognized in by your command line, add the ``Scripts`` directory (by default ``C:\Python35-32\Scripts``) to your ``PATH`` or use ``py -3 -m pip`` instead
 
 pip in virtual environments
 +++++++++++++++++++++++++++++++++

@@ -6,8 +6,10 @@ logging built-in module
 :py:mod:`logging` module from the Standard Library allows for a flexible and consistent logging across different
 modules of your application.
 
-Apart from the examples presented below, see the `Python Logging Cookbook <https://docs.python.org/2/howto/logging-cookbook.html>`_
-and the examples in :py:mod:`logging` documentation
+.. seealso::
+
+    Apart from the examples presented below, see the `Python Logging Cookbook <https://docs.python.org/2/howto/logging-cookbook.html>`_
+    and the examples in :py:mod:`logging` documentation
 
 Example configuration in a muli-module application
 ------------------------------------------------------------------------------

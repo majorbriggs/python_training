@@ -1,17 +1,129 @@
-Common Python gotchas
+Common Python *gotchas*
 ===========================================
 
 Situations where Python way of doing things is not what we may expect
 
+What exactly are variables in Python?
+------------------------------------------------
+
+Let's consider the following piece of code
+
+.. code-block:: python
+
+    first_list = [1, 2, 3]
+    second_list = first_list
+
+    second_list.append(4)
+    print(first_list) # [1, 2, 3, 4]
+
+    print(l1 is l2) # True
+    print(l1 == l2) # True
+
+You might expect to see in the end the original content of the list ``[1, 2, 3]``.
+
+Instead, both ``second_list`` and and ``first_list`` are references to the same list object. Why is it so?
+
+Variables as "labels" of objects
++++++++++++++++++++++++++++++++++++++
+
+If you have experience from other popular languages, you may expect that in statements like:
+
+.. code-block:: python
+
+    x = ["Bob", "Alice"]
+    x = 1
+    y = x
+
+``x`` and ``y`` would be some places in memory, that upon the execution of these lines get "filled" with the appropriate values (a list, a number and the same number respectively)
+
+But that's is **not** how things work in Python.
+
+``x`` or any variable is only a label, assigned to an object as a reference (to the list ``['Bob', 'Alice']`` in this case) ,
+and on the next line, the same "label" is re-assigned to another object - the number ``1``.
+Both these objects can have multiple variables assigned to them and may continue to exist even if ``x`` or ``y`` do not refer to them anymore.
+
+In practice these *objects* exist until there is at least one *variable* refering to them. It may be confusing, so let's see another example:
+
+
+.. code-block:: python
+
+    a = "Bob"
+    b = a
+
+``a`` and ``b`` are not separate objects. They are separate "labels" pointing to the same string object ``"Bob"``
+
+.. _fig2vars1obj:
+
+.. figure:: img\objects_1.png
+    :align: center
+
+    Both variables are assigned to the same object
+
+
+Now now reassign the variable ``b`` to another string object ``"Alice"``.
+
+.. code-block:: python
+
+    b = "Alice"
+
+.. _fig2vars2obj:
+
+.. figure:: img\objects_2.png
+    :align: center
+
+    Second variable is reassigned to another object.
+
+
+Let's go back to the original example:
+
+.. code-block:: python
+
+    first_list = [1, 2, 3]
+    second_list = first_list
+
+    second_list.append(4)
+    print(first_list)
+
+Exactly like in the previous example, both varialbes ``first_list`` and ``second_list`` are assigned to the same object in memory (like in :numref:`fig2vars1obj`)
+As list are **mutable** objects, they can be changed "in place". We append a new element to the list that is referenced by both ``first_list`` and ``second_list``, no matter which variable we use in the append method on.
+
+How to create a **real** copy of an object
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To create a copy of an object, separate and independent from the original variable you can use:
+:py:func:`copy.copy` and :py:func:`copy.deepcopy`
+
+From python docs:
+
+The difference between shallow and deep copying is only relevant for compound objects (objects that contain other objects, like lists or class instances):
+
+- A shallow copy constructs a new compound object and then (to the extent possible) inserts references into it to the objects found in the original.
+- A deep copy constructs a new compound object and then, recursively, inserts copies into it of the objects found in the original.
+
+
+alternatively, a copy of a list is often created with slicing
+
+.. code-block:: python
+
+    l1 = [1, 2, 3, 4, 5]
+
+    l2 = l1[:] # returns a "slice" with all elements of l1
+
+    print(l1 is l2) # False
+    print(l1 == l2) # True
+
+
+
 Mutable default arguments
---------------------------
+---------------------------------
 
 The most common and controversial example of an 'unusual' behavior of Python is how default mutable arguments are evaluated.
 
 What are mutable and immutable objects
-+++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++
 
 Mutable objects in Python are the ones that can be changed "in place", without assigning it to a new objects.
+For example, you can use ``some_list.append('new_element')`` to add a new element to ``some_list``, the method does not return a new list, but changes the original object referenced by ``some_list``.
 
 Immutable:
     - Numeric types: int, float, complex
@@ -118,7 +230,6 @@ The general rules are:
 #. In all other cases, use ``None``, check for it and create the empty list or string inside the body of the function
 
 Read more on `Python Conquers The Universe <https://pythonconquerstheuniverse.wordpress.com/2012/02/15/mutable-default-arguments/>`_
-
 
 
 

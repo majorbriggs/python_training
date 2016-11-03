@@ -33,6 +33,13 @@ You can use most of the regex operations in two ways
 For the sake of clarity and also some performance advantage, if the regex is going to be used multiple times,
 the second method (compile) is preferred.
 
+
+.. tip::
+
+    Use `Regex101 <https://regex101.com/>`_ for debugging and testing regular expressions. (It offers a Python specific interpreter)
+
+
+
 Using ``groups()`` and unpacking to get multiple parts of the match
 ------------------------------------------------------------------------
 
@@ -71,15 +78,7 @@ If the pattern has more groups, it returns a list of tuples with each tuple cont
 
 
 
-Python online checker
----------------------------
+.. seealso::
 
-Use `Regex101 <https://regex101.com/>`_ for debugging. (offers a Python specific interpreter)
-
-
-
-Further reading
----------------------------
-
-For a more detailed introduction, read the excellent chapter on Python regular expressions in
-`Automate the Boring Stuff with Python <https://automatetheboringstuff.com/chapter7/>`_
+    For a more detailed introduction, read the excellent chapter on Python regular expressions in
+    `Automate the Boring Stuff with Python <https://automatetheboringstuff.com/chapter7/>`_

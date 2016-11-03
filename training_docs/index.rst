@@ -18,6 +18,7 @@ Contents:
    files
    regular_expressions
    requests
+   api
    arguments
    logging
    gotchas

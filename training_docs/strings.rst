@@ -55,4 +55,4 @@ To specify number precision and width of the whole substring use the following s
 - ``0`` is the index of the argument
 - ``3`` digits of precision
 - ``10`` is the width of the whole "substring"
-- ``f``, as it is a floating point number.
+- ``f`` as it is a floating point number.

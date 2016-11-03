@@ -10,17 +10,16 @@ The module name is available within the module as a :py:data:`__main__`
 The ``if __name__ == '__main__'`` section
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-You will often see the main part of a script enclosed in such if block.
-
-**TL;DR** If you skip this part and write some code directly on the top level of the module (not inside a function),
-the code will be executed every time you import your module from somewhere else.
-
+You will often see the main part of a script enclosed in such an if block:
 
 .. code-block:: python
 
     if __name__ == '__main__':
         print('This is executed only if the module is executed directly by python interpreter')
 
+
+Why do we need it? The short answer is - If you skip the ``if __name__ == '__main__'`` and write some code directly on the top level of the module (not inside a function),
+the code will be executed when you import your module from somewhere else (not run it as the main program). See below for some more details.
 
 
 Detailed explanation
@@ -33,7 +32,6 @@ Before executing the code, it will define a few special variables.
 For example, if the python interpreter is running that module (the source file) as the main program,
 it sets the special __name__ variable to have a value "__main__".
 If this file is being imported from another module, __name__ will be set to the module's name.
-
 
 That means, that the code in this block is executed only, if the module is run directly by the interpeter (and not imported into another module)
 
