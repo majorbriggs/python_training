@@ -1,12 +1,6 @@
 TODO
 ===============
-
-#. APIs and JSON/XML format
-    - Google Maps? Twitter?
-
 #. Web scraping with BeautifulSoup
-
-#. Send/Receive e-mails with GMail API
 
 #. Working with Excel files
 

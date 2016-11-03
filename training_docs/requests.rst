@@ -181,7 +181,7 @@ Excercise REQ00: Basic HTTP Authentication
 Tasks
 ++++++++
 
-#. Send a GET request to one of LSYP intranet pages. Use HTTPBasicAuth object to to provide your credentials.
+#. Send a GET request to one of LSYP intranet pages. Use ``HTTPBasicAuth`` object to to provide your credentials.
 #. You can store them temporarily in an external module and import to your script as variables.
 
 Bonus excercise: store username and password in an encoded form (using e.g. :py:func:`base64.b64encode` and :py:func:`base64.b64decode`)

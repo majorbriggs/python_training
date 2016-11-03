@@ -128,3 +128,24 @@ ____________________________
             print("FAILED")
     else:
         print("Brute force on Session ID failed")
+
+
+
+.. _API00_solution:
+
+Solution to API00
+-----------------------------
+
+Working script
+____________________________
+
+.. code-block:: python
+
+    from jira import JIRA
+
+    URL = "https://issues.apache.org/jira/"
+    j = JIRA(URL)
+
+    search_results = j.search_issues('type="New Feature"', maxResults=100)
+    for issue in search_results:
+        print(issue.fields.summary)
