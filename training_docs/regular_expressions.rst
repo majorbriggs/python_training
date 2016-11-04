@@ -5,11 +5,43 @@ Regular expressions
 Introduction
 ---------------------------
 
+From Python documentation:
+
+.. pull-quote::
+
+    Regular expressions (called REs, or regexes, or regex patterns)
+    are essentially a tiny, highly specialized programming language embedded inside
+    Python and made available through the :py:mod:`re` module. Using this little language, you
+    specify the rules for the set of possible strings that you want to match; this set
+    might contain English sentences, or e-mail addresses, or TeX commands, or anything you like.
+    You can then ask questions such as “Does this string match the pattern?”, or “Is there a match for the pattern anywhere in this string?”.
+    You can also use REs to modify a string or to split it apart in various ways.
+
+
+
+Regex example
+-----------------
+
+Let's see a simple example of regex operation in Python
+
+.. code-block:: python
+
+    import re
+
+    message = "File saved at 17:23:57"
+
+    pattern = "\d\d:\d\d:\d\d" # \d is a digit
+
+    m = re.search(pattern, message)
+
+    if m: # would be None if no match is found
+        print(m.group())
+
 
 Compiled regular expressions vs module-level functions
 ------------------------------------------------------
 
-You can use most of the regex operations in two ways
+In Python you can use most of the regex operations in two ways
 
 - as module-level functions of :py:mod:`re` module
 

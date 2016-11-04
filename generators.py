@@ -1,3 +1,9 @@
+import re
 
+message = "File saved at 17:23:57"
 
-f = (i*i for i in range(50)) # generator expression
+pattern = "\d\d:\d\d:\d\d"
+
+m = re.search(pattern, message)
+if m: # would be None if no match is found
+    print(m.group())

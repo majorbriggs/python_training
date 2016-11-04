@@ -18,12 +18,14 @@ Contents:
    files
    regular_expressions
    requests
+   webscraping
    api
    arguments
-   logging
    gotchas
+   advanced
+   logging
+   docs
    solutions
-   todo
 
 Indices and tables
 ==================

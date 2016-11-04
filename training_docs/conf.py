@@ -314,7 +314,8 @@ man_pages = [
 # man_show_urls = False
 intersphinx_mapping = {'python': ('https://docs.python.org/3.5', None),
                        'requests': ('http://docs.python-requests.org/en/master/', None),
-                       'jira': ('https://pythonhosted.org/jira/', None)}
+                       'jira': ('https://pythonhosted.org/jira/', None),
+                       'numpy': ('https://docs.scipy.org/doc/numpy/', None)}
 
 # -- Options for Texinfo output -------------------------------------------
 
@@ -326,7 +327,10 @@ texinfo_documents = [
      author, 'PythonTraining', 'One line description of project.',
      'Miscellaneous'),
 ]
-
+rst_epilog="""
+.. |nbsp| unicode:: 0xA0
+   :trim:
+"""
 # Documents to append as an appendix to all manuals.
 #
 # texinfo_appendices = []

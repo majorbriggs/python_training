@@ -26,7 +26,7 @@ Instead, both ``second_list`` and and ``first_list`` are references to the same 
 Variables as "labels" of objects
 +++++++++++++++++++++++++++++++++++++
 
-If you have experience from other popular languages, you may expect that in statements like:
+If you have any experience from other popular programming languages, you may expect that in statements like:
 
 .. code-block:: python
 
@@ -309,6 +309,8 @@ This pattern can be used as a shortcut when setting default values
 
     default_list = [1, 2, 3, 4, 5]
 
-    # (....)
+    some_other_list = []
 
-    new_list = some_list or default_list  # new_list will be evaluated to default_list, if some_list is empty
+    new_list = some_other_list or default_list
+
+    print(new_list is default_list) # -> True

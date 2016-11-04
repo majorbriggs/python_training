@@ -9,7 +9,7 @@ TODO
 #. py.test
 
 #. Advanced concepts:
-    - classes, magic methods (__init__, __repr__ , __enter__), super(), inheritance, mixin classes
+    - super(), inheritance, mixin classes
     - decorators
 
 

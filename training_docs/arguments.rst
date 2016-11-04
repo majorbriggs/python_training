@@ -1,7 +1,11 @@
 \*args and \*\*kwargs
 ==========================
 
-``*args`` and ``**kwargs`` used as arguments in function definition allow to pass variable number of arguments to a function
+What are function arguments with an asterisk?
+----------------------------------------------
+
+On definition of a function, the list arguments may contain elements with one or two asterisks (\*). Traditionally they are named ``args`` and ``kwargs`` respectively.
+``*args`` and ``**kwargs`` allow the function to accept variable number of arguments.
 
 Consider the example:
 
@@ -39,3 +43,30 @@ So, within the function body:
 
 The names ``args`` and ``kwargs`` are only customary names, optional arguments can be marked with any valid python object name
 (``**keywords``, ``**properties``, ``**optional`` etc..)
+
+
+Unpacking variables to function arguments
+-------------------------------------------------
+
+Similarily, when calling a function, you can pass multiple arguments from a list or a dicrionary as its arguments using **unpacking**
+
+See the example:
+
+.. code-block:: python
+
+    def f(i, j, k):
+        print("Got three arguments, {}, {}, {}".format(i, j, k))
+
+    x = (1, 2, 3)
+
+    a, b, c = x  # using unpacking on assignment
+
+    f(*x)  # unpack the list x into positional arguments of f
+
+    # -> Got three arguments, 1, 2, 3
+
+    keyword_arguments = {"i": 10, "j": 20, "k":30}
+
+    f(**keyword_arguments)  # unpack the dict into the fuction arguments
+
+    # -> Got three arguments, 10, 20, 30
