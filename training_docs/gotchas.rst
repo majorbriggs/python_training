@@ -152,28 +152,34 @@ Consider the following examples:
     l.append(4)  # l is still the same object, but mutated (one element longer)
 
 
-Mutable object as default function argument
-+++++++++++++++++++++++++++++++++++++++++++++++
+Mutable objects as defaults for function arguments
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Let's say we want to implement a function that expects a string and a list as its arguments.
 The function should append the string to the list and return the resulting list.
+Additionally, both of the arguments should have a default value. Default value for the "list" argument should be an empty list.
 
 You may want to write something along these lines:
 
 .. code-block:: python
 
-    def add_vegetable(vegetable, list_of_vegetables=[]):
+    def add_vegetable(vegetable='carrot', list_of_vegetables=[]):
         list_of_vegetables.append(vegetable)
         return list_of_vegetables
 
-    first_list = add_vegetable('carrot')
+    first_list = add_vegetable()
     second_list = add_vegetable('banana')
 
     print(first_list)
     print(second_list)
 
+The "common-sense" interpretation of this code would be:
 
-What you may expect to see as a result is something like:
+Every time ``add_vegetable`` is called and the both arguments of the function are ommited:
+    1. ``vegetable`` variable will be bound to a string object containing ``"carrot"``
+    2. ``list_of_vegetables`` will be bound to an empty list
+
+If you execute the code above, you may expect to see a result like:
 
 .. code-block:: none
 
@@ -189,7 +195,7 @@ But instead you get
     ['carrot', 'banana']
 
 
-This is because Python evaluates the default values only once, when the function is defined and not each time it is called.
+This is because **Python evaluates the default values only once, when the function is defined** and not each time it is called.
 Therefore, all subsequent calls of ``add_vegetables()`` are using the same object, which each time is mutated by the function.
 
 Another important thing to notice here is that we didn't get the following either:
@@ -202,8 +208,7 @@ Another important thing to notice here is that we didn't get the following eithe
 
 This is because both ``first_list`` and ``second_list`` are not separate objects, they are only
 "tags" that point to the same object in the memory (the default argument of ``add_vegetables``)
-therefore, when the default list_of_vegetables is changed, each variable that "points" to this object will return the changed value
-
+therefore, when the default ``list_of_vegetables`` is changed, each variable that "points" to this object will return the changed value
 
 What should be done to get the expected behavior is
 

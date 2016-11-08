@@ -159,7 +159,7 @@ To make it clear:
     # -> Hello
 
 
-Excercise: ADV00: Functions are objects: ``wait_until`` method
+Excercise: ADV00: Functions are objects - ``wait_until`` method
 ---------------------------------------------------------------
 
 To see some real benefit from passing functions as arguments to other functions, let's implement a custom ``wait_until()`` function that will check a given condition until timeout is expired.

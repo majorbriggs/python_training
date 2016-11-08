@@ -18,7 +18,6 @@ Contents:
    files
    regular_expressions
    requests
-   webscraping
    api
    arguments
    gotchas

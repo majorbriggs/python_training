@@ -49,7 +49,7 @@ To create a sub page and add it to the Table of Contents:
     This is the content of the section
 
 
-Building HTML
+Building HTML docs
 -------------------------------
 
 - Go to the docs sources directory, open command line there and type ``make html``
@@ -62,4 +62,4 @@ Excercise DOC00: Analyze the training docs sources
 #. In PyCharm, clone the training repository https://github.com/majorbriggs/python_training.git
 #. Analyze how the different sections of the docs were defined in the corresponding reST documents.
 #. Check how references to external documentations (e.g. to :py:mod:`requests`) are resolved thanks to ``intersphinx_mapping`` setting in ``conf.py``
-#. Check how different language highlighting works on examples from requests.rst (php, python, none, rst)
+#. Check how different language highlighting works on examples from ``requests.rst`` (php, python, none, rst)
