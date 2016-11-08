@@ -1,4 +1,4 @@
-Common Python *gotchas*
+Common Python gotchas
 ===========================================
 
 Situations where Python way of doing things is not what we may expect
@@ -122,21 +122,24 @@ The most common and controversial example of an 'unusual' behavior of Python is 
 What are mutable and immutable objects
 +++++++++++++++++++++++++++++++++++++++++++
 
-Mutable objects in Python are the ones that can be changed "in place", without assigning it to a new objects.
+Mutable objects in Python are the ones that can be changed "in place", so that the a method called on the object acts **on the object itself**, and does not return a new object.
 For example, you can use ``some_list.append('new_element')`` to add a new element to ``some_list``, the method does not return a new list, but changes the original object referenced by ``some_list``.
 
-Immutable:
+Immutable types:
     - Numeric types: int, float, complex
     - string
     - tuple
     - frozen set
     - bytes
 
-Mutable:
+Mutable type:
     - list
     - dict
     - set
     - byte array
+
+
+Consider the following examples:
 
 .. code-block:: python
 
@@ -152,7 +155,10 @@ Mutable:
 Mutable object as default function argument
 +++++++++++++++++++++++++++++++++++++++++++++++
 
-Consider the following function
+Let's say we want to implement a function that expects a string and a list as its arguments.
+The function should append the string to the list and return the resulting list.
+
+You may want to write something along these lines:
 
 .. code-block:: python
 
@@ -167,7 +173,7 @@ Consider the following function
     print(second_list)
 
 
-What you may expect to see is something like:
+What you may expect to see as a result is something like:
 
 .. code-block:: none
 

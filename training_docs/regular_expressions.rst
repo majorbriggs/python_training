@@ -19,7 +19,7 @@ From Python documentation:
 
 
 
-Regex example
+Example regex
 -----------------
 
 Let's see a simple example of regex operation in Python
