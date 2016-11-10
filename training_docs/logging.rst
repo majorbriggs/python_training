@@ -25,7 +25,7 @@ All calls to ``logging.getLogger('logger_name')`` within the same python interpe
 a reference to the same logger object. A good practice when dealing with multiple modules is to have one module with
 a global log configuration file, and separate calls to ``logging.getLogger(__name__)`` in each modules.
 
-The variable ``__name__`` contains the name of the current python module (with "." notation, e.g. ``some_package.some_module``)
+The variable ``__name__`` contains the name of the current python module (with . notation, e.g. ``some_package.some_module``)
 So, by calling
 
 .. code-block:: python

@@ -21,7 +21,7 @@ Consider the example:
 
     name = "Bob"
     age = 23
-    hobbies = ['Python', 'Programming', 'Travels']
+    hobbies = ['Python', 'Programming', 'Tomb Raider']
 
     string_template = "My name is {}. I am {} years old. My hobbies are {}"
 
@@ -29,7 +29,7 @@ Consider the example:
 
     print(string_template)
 
-    # My name is Bob. I am 23 years old. My hobbies are ['Python', 'Programming', 'Travels']
+    # My name is Bob. I am 23 years old. My hobbies are ['Python', 'Programming', 'Tomb Raider']
 
 Note that ``format()`` accepts data of different types (strings, numbers, lists, dicts etc...) and automatically converts them to their string representation.
 

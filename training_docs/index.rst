@@ -14,6 +14,7 @@ Contents:
    intro
    environment
    project_structure
+   builtins
    strings
    files
    regular_expressions
