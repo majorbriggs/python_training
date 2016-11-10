@@ -65,13 +65,6 @@ In Python you can use most of the regex operations in two ways
 For the sake of clarity and also some performance advantage, if the regex is going to be used multiple times,
 the second method (compile) is preferred.
 
-
-.. tip::
-
-    Use `Regex101 <https://regex101.com/>`_ for debugging and testing regular expressions. (It offers a Python specific interpreter)
-
-
-
 Using ``groups()`` and unpacking to get multiple parts of the match
 ------------------------------------------------------------------------
 
@@ -114,3 +107,31 @@ If the pattern has more groups, it returns a list of tuples with each tuple cont
 
     For a more detailed introduction, read the excellent chapter on Python regular expressions in
     `Automate the Boring Stuff with Python <https://automatetheboringstuff.com/chapter7/>`_
+
+
+
+Debugging regular expressions in PyCharm
+-----------------------------------------------------
+
+
+To check the regular expressions with PyCharm, place the caret somewhere in
+the regular expression string parameter of :py:func:`re.compile` and press Alt-Enter and select Check regex from the pop up list.
+
+.. image:: img\regex_debug1.png
+
+
+You can use the Sample field to see which strings match, and which don't, your regular expression.
+
+.. image:: img\regex_debug2.png
+
+
+.. image:: img\regex_debug3.png
+
+
+
+
+.. tip::
+
+    For more complicated expressions and a better insight in some advanced parameters, you can use online debuggers like `Regex101 <https://regex101.com/>`_. (It offers a Python specific interpreter)
+
+
