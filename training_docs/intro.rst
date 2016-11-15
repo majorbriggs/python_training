@@ -14,9 +14,42 @@ Requirements
 
 Before taking part in the training, make sure to download and install the following tools (available in Software Center)
 
-- Python 3.5.2
+- Python 3.5.2 (Add Python to PATH during installation)
 - PyCharm 2016.1
 - Git
+
+
+Verify your installation
+------------------------------
+
+After you installed Python and PyCharm:
+
+#. Check Python installation
+    - open the command line and type ``python`` or ``py -3`` if you have python 2.x installed alonside.
+    - Check that Python **3.5.2** started
+    - Close the interpreter by pressing ``Ctrl+Z`` and ``Enter``
+#. Upgrade and check ``pip``
+    - run ``pip3 install --upgrade pip`` and ``pip3 install requests``
+    - start python interpreter again and check if you can execute ``import requests`` and don't get ``ImportError``
+
+#. Configure PyCharm and check auto-completion.
+
+    - Open PyCharm
+    - Create new project.
+    - Go to Setting->Project: ... -> Project interpeter and set Python 3.5.2 as project interpeter
+
+        .. image:: img/select_interpreter.png
+
+    - Create a new python module in the project and type:
+
+        .. code-block:: python
+
+            import os
+            import requests
+
+    - Check that the line above is not red underlined and that auto-completion works (type ``os.`` and see if the list of suggestions appeared)
+
+        .. image:: img/autocompletion.png
 
 
 Python 3.x vs 2.x
