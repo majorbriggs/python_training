@@ -314,7 +314,7 @@ man_pages = [
 # man_show_urls = False
 intersphinx_mapping = {'python': ('https://docs.python.org/3.5', None),
                        'requests': ('http://docs.python-requests.org/en/master/', None),
-                       'jira': ('https://pythonhosted.org/jira/', None),
+                       'jira': ('https://jira.readthedocs.io/en/master/', None),
                        'numpy': ('https://docs.scipy.org/doc/numpy/', None)}
 
 # -- Options for Texinfo output -------------------------------------------

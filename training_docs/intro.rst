@@ -14,7 +14,7 @@ Requirements
 
 Before taking part in the training, make sure to download and install the following tools (available in Software Center)
 
-- Python 3.5.2 (Add Python to PATH during installation)
+- Python 3.5.2
 - PyCharm 2016.1
 - Git
 
@@ -28,12 +28,12 @@ After you installed Python and PyCharm:
     - open the command line and type ``python`` or ``py -3`` if you have python 2.x installed alonside.
     - Check that Python **3.5.2** started
     - Close the interpreter by pressing ``Ctrl+Z`` and ``Enter``
-#. Upgrade and check ``pip``
-    - run ``pip3 install --upgrade pip`` and ``pip3 install requests``
-    - start python interpreter again and check if you can execute ``import requests`` and don't get ``ImportError``
 
 #. Configure PyCharm and check auto-completion.
 
+    - Install PyCharm 2016.x from Software Center
+    - After installation it's not available through the search in Start Menu. Create a shortcut on the desktop manually
+    (to ``C:\Program Files (x86)\JetBrains\PyCharm Community Edition 2016.1.4\bin\pycharm.exe``)
     - Open PyCharm
     - Create new project.
     - Go to Setting->Project: ... -> Project interpeter and set Python 3.5.2 as project interpeter
@@ -45,7 +45,6 @@ After you installed Python and PyCharm:
         .. code-block:: python
 
             import os
-            import requests
 
     - Check that the line above is not red underlined and that auto-completion works (type ``os.`` and see if the list of suggestions appeared)
 

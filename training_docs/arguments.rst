@@ -1,3 +1,5 @@
+.. _args_kwargs:
+
 \*args and \*\*kwargs
 ==========================
 
