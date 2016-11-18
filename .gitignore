@@ -5,3 +5,4 @@ training_venv
 *.log.?
 output.html\
 my_creds.py
+track.rst
