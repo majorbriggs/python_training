@@ -4,7 +4,7 @@ String formatting
 
 There are two popular ways to format strings in Python
 
-- string ``format()`` method
+- string :py:meth:`str.format` method
 - ``%`` notation
 
 We will cover here only the first method, as it is now considered to be the standard and recommended way.

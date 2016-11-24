@@ -182,10 +182,7 @@ Tasks
 ++++++++
 
 #. Send a GET request to one of LSYP intranet pages. Use ``HTTPBasicAuth`` object to to provide your credentials.
-#. You can store them temporarily in an external module and import to your script as variables.
-
-Bonus excercise: store username and password in an encoded form (using e.g. :py:func:`base64.b64encode` and :py:func:`base64.b64decode`)
-Don't forget to delete the sensitive data after the exercise:)
+#. You can store them temporarily in an external module and import to your script as variables or get from the user with :py:func:`input`
 
 :ref:`REQ00_solution`
 
@@ -208,7 +205,7 @@ According to Wikipedia:
 
     It is mostly known as an attack vector for websites but can be used to attack any type of SQL database.
 
-Practically, if a web application contains an entry field, from which the string is directly put into an SQL query,
+Practically, if a web application contains an entry field, from which the str  ing is directly put into an SQL query,
 there is a risk, that the user would escape the query and execute some logic or operations that were not originally intended by the author of the application.
 
 

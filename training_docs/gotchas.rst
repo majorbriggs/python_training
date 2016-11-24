@@ -40,9 +40,18 @@ But that's is **not** how things work in Python.
 
 ``x`` or any variable is only a label, assigned to an object as a reference (to the list ``['Bob', 'Alice']`` in this case) ,
 and on the next line, the same "label" is re-assigned to another object - the number ``1``.
-Both these objects can have multiple variables assigned to them and may continue to exist even if ``x`` or ``y`` do not refer to them anymore.
+Both these objects (the list and the number) can have multiple variables assigned to them and may continue to exist even if ``x`` or ``y`` do not refer to them anymore.
 
 In practice these *objects* exist until there is at least one *variable* refering to them. It may be confusing, so let's see another example:
+
+So again, by executing:
+
+.. code-block:: python
+
+    x = ["Bob", "Alice"]
+
+we do not put the list to some place in memory named x, instead, we create a new list object ["Bob", "Alice"] somewhere in the memory and label it with the variable ``x``.
+The variable can be reassigned to some other object, but the list may still exist, if there are other variables referencing to it.
 
 
 .. code-block:: python
@@ -51,6 +60,7 @@ In practice these *objects* exist until there is at least one *variable* referin
     b = a
 
 ``a`` and ``b`` are not separate objects. They are separate "labels" pointing to the same string object ``"Bob"``
+
 
 .. _fig2vars1obj:
 

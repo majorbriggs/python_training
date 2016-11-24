@@ -160,4 +160,4 @@ Example from `Python Logging Cookbook <https://docs.python.org/2/howto/logging-c
         print(filename)
 
 
-See also :py:class:`logging.handlers.RotatingFileHandler` for file rotating based on time, the not size of the log.
+See also :py:class:`logging.handlers.TimedRotatingFileHandler` for file rotating based on time, the not size of the log.
