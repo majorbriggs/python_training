@@ -325,7 +325,7 @@ To send a cookie with :py:mod:`requests`, use cookies parameter:
 
     # (...)
 
-    requests.post(URL, cookies={'cookie_name', 'cookie_value'})
+    requests.post(URL, cookies={'cookie_name': 'cookie_value'})
 
 Tasks
 ++++++++++
