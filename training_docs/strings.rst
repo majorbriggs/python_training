@@ -27,7 +27,7 @@ Consider the example:
 
     output_string = string_template.format(name, age, hobbies)
 
-    print(string_template)
+    print(output_string)
 
     # My name is Bob. I am 23 years old. My hobbies are ['Python', 'Programming', 'Tomb Raider']
 

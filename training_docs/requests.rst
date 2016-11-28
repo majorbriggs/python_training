@@ -144,7 +144,7 @@ Authentication
 
     auth = ('my_username', 'my_password')
 
-    r = requests.get(URL, auth=auth, params=payload)
+    r = requests.get(URL, auth=auth)
 
 
 Go to :ref:`req00`

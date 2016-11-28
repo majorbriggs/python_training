@@ -3,6 +3,6 @@ _build
 training_venv
 *.log
 *.log.?
-output.html\
+output.html
 my_creds.py
 track.rst
