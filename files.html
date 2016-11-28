@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Working with files &mdash; Python Training 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Regular expressions" href="regular_expressions.html"/>
+        <link rel="prev" title="String formatting" href="strings.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Training
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Working with files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#opening-a-file">Opening a file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arguments-of-open-function">Arguments of <code class="docutils literal"><span class="pre">open()</span></code> function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#opening-multiple-files-at-once">Opening multiple files at once</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-paths">Working with paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iterating-over-a-file">Iterating over a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#excercise-fil00-read-write-to-a-file">Excercise FIL00: Read/write to a file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Training</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Working with files</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/files.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="working-with-files">
+<h1>Working with files<a class="headerlink" href="#working-with-files" title="Permalink to this headline">¶</a></h1>
+<p>Many of your future application will involve some read/write operations on external files.
+Python comes with a lot of convenient tool to handle these.</p>
+<div class="section" id="opening-a-file">
+<h2>Opening a file<a class="headerlink" href="#opening-a-file" title="Permalink to this headline">¶</a></h2>
+<p>Python has a built in function <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#open" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">open()</span></code></a> that allows you to create a file object like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some_file.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default, the file is open in read mode AND has to be closed after usage with</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>It is good practice to use the <a class="reference external" href="https://docs.python.org/3.5/reference/compound_stmts.html#with" title="(in Python v3.5)"><code class="xref std std-keyword docutils literal"><span class="pre">with</span></code></a> keyword when using file objects. This has the advantage that the file is properly closed after its suite finishes, even if an exception is raised on the way.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some_file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">f_in</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="c1"># do some operations</span>
+
+<span class="c1"># no need for f_in.close() statement, it&#39;s executed automatically on leaving &#39;the&#39; with block</span>
+</pre></div>
+</div>
+<div class="section" id="arguments-of-open-function">
+<h3>Arguments of <code class="docutils literal"><span class="pre">open()</span></code> function<a class="headerlink" href="#arguments-of-open-function" title="Permalink to this headline">¶</a></h3>
+<p>The first argument is a string containing the filename.
+The second argument is another string containing a few characters describing the way in which the file will be used.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">'r'</span></code> when the file will only be read</li>
+<li><code class="docutils literal"><span class="pre">'w'</span></code> for only writing (an existing file with the same name will be erased)</li>
+<li><code class="docutils literal"><span class="pre">'a'</span></code> opens the file for appending; any data written to the file is automatically added to the end.</li>
+<li><code class="docutils literal"><span class="pre">'r+'</span></code> opens the file for both reading and writing</li>
+</ul>
+<p>if the argument is ommited, &#8216;r&#8217; is assumed</p>
+<p>Normally, files are opened in text mode, that means, you read and write strings from and to the file, which are encoded in a specific encoding. If encoding is not specified, the default is platform dependent</p>
+<p><code class="docutils literal"><span class="pre">'b'</span></code> appended to the mode opens the file in binary mode: now the data is read and written in the form of bytes objects. This mode should be used for all files that don’t contain text.</p>
+<p>Files can be opened in different modes</p>
+</div>
+</div>
+<div class="section" id="opening-multiple-files-at-once">
+<h2>Opening multiple files at once<a class="headerlink" href="#opening-multiple-files-at-once" title="Permalink to this headline">¶</a></h2>
+<p>With &#8220;with&#8221; you can also open mulitple files at once, by separating the function calls with a coma. It&#8217;s an easy way to do file processing (reading from one file, writing to another)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">txt</span> <span class="o">=</span> <span class="s1">&#39;some text&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">newfile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">oldfile</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">infile</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">)]</span> <span class="o">+</span> <span class="s1">&#39; - Truly a great person!</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#fil00"><span class="std std-ref">Excercise FIL00: Read/write to a file</span></a> for a short excercise</p>
+</div>
+<div class="section" id="working-with-paths">
+<h2>Working with paths<a class="headerlink" href="#working-with-paths" title="Permalink to this headline">¶</a></h2>
+<p>File operations often require some manipulation of disk paths to create the path string to the required input or output file.
+In such cases, the module <a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#module-os.path" title="(in Python v3.5)"><code class="xref py py-mod docutils literal"><span class="pre">os.path</span></code></a> comes in handy. Here are some functions that you might see in use more than often.</p>
+<p><a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.join" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">os.path.join()</span></code></a>: creates a correct path string from a list of strings.The path created with <a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.join" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">os.path.join()</span></code></a> will work regardless the operating system. (On Windows paths are created with <code class="docutils literal"><span class="pre">'\'</span></code> while on Linux with <code class="docutils literal"><span class="pre">'/'</span></code></p>
+<p><a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.abspath" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">os.path.abspath()</span></code></a> returns the absolute path of a file given with a relative path</p>
+<p><a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.dirname" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">os.path.dirname()</span></code></a> returns the path to directory of a filename given as argument</p>
+</div>
+<div class="section" id="iterating-over-a-file">
+<h2>Iterating over a file<a class="headerlink" href="#iterating-over-a-file" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal"><span class="pre">for</span></code> loop to iterate over the lines of a file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;input.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;some string&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="excercise-fil00-read-write-to-a-file">
+<span id="fil00"></span><h2>Excercise FIL00: Read/write to a file<a class="headerlink" href="#excercise-fil00-read-write-to-a-file" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Write a script that will write 10 random integers from range 1-10 to a file. Use <a class="reference external" href="https://docs.python.org/3.5/library/random.html#random.randint" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">random.randint()</span></code></a> to generate the numbers</li>
+<li>Open two files (input, output) in a single <code class="docutils literal"><span class="pre">with</span></code> block. Read the numbers from the input file and write the letter <code class="docutils literal"><span class="pre">'X'</span></code> repeated the given number to the output file.</li>
+</ol>
+<div class="highlight-none"><div class="highlight"><pre><span></span>input.txt
+
+1
+4
+3
+</pre></div>
+</div>
+<p>The output file should look like:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>output.txt
+
+X
+XXXX
+XXX
+</pre></div>
+</div>
+<p><span class="xref std std-ref">FIL00_solution</span></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regular_expressions.html" class="btn btn-neutral float-right" title="Regular expressions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="strings.html" class="btn btn-neutral" title="String formatting" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Piotr Baranowski.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

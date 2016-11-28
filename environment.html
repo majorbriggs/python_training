@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Environment configuration &mdash; Python Training 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Project structure" href="project_structure.html"/>
+        <link rel="prev" title="Introduction" href="intro.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Training
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Environment configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-environment-variables">Setting environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pycharm-git-setup">PyCharm Git setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#virtualenv">virtualenv</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-do-we-need-virtual-environments">Why do we need virtual environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pycharm-setup">PyCharm Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-packages-into-the-virtual-environment">Installing packages into the virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-virtualenv-outside-of-ide">Working with virtualenv outside of IDE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pip">pip</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pip-in-virtual-environments">pip in virtual environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements-txt-file">requirements.txt file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Training</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Environment configuration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/environment.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="environment-configuration">
+<h1>Environment configuration<a class="headerlink" href="#environment-configuration" title="Permalink to this headline">¶</a></h1>
+<p>We start with setting up a development environment, installation of third part libraries and virtual environments.</p>
+<div class="section" id="setting-environment-variables">
+<h2>Setting environment variables<a class="headerlink" href="#setting-environment-variables" title="Permalink to this headline">¶</a></h2>
+<p>In case you have multiple versions of python installed alongside, make sure you know which interpreter is started by <code class="docutils literal"><span class="pre">python</span></code> command.</p>
+<p>On Linux systems, where both versions of Python are pre-installed by default, <code class="docutils literal"><span class="pre">python</span></code> command starts the system Python2.x and <code class="docutils literal"><span class="pre">python3</span></code> the 3.x version respectively.</p>
+<p>By default, the python directory should be added to the system <code class="docutils literal"><span class="pre">PATH</span></code> variable.
+Test it by running command line and typing <code class="docutils literal"><span class="pre">python</span></code></p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>If you have both 2.x and 3.x installed, you can choose the version to run by typing:</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">py</span> <span class="pre">-2</span></code> for Python 2.x</li>
+<li><code class="docutils literal"><span class="pre">py</span> <span class="pre">-3</span></code> for Python 3.x</li>
+</ul>
+</div>
+<p>If after typing <code class="docutils literal"><span class="pre">python</span></code> in the command line, you get the error:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>&#39;python&#39; is not recognized as an internal or external command, operable program or batch file.
+</pre></div>
+</div>
+<p>add to the user or system <code class="docutils literal"><span class="pre">PATH</span></code> variable the correct paths to Python and Python\Scripts directories (e.g. <code class="docutils literal"><span class="pre">C:\Python35-32\Scripts\;C:\Python35-32\</span></code>)</p>
+</div>
+<div class="section" id="pycharm-git-setup">
+<h2>PyCharm Git setup<a class="headerlink" href="#pycharm-git-setup" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Create a new Git repostory for the project files on GitHub or <a class="reference external" href="http://git.dev.lsy.pl">LHSY GitBucket</a></li>
+<li>Start PyCharm</li>
+<li>Go to VCS -&gt; Check out from Version Control -&gt; Git</li>
+<li>Enter the repository URL and click Clone</li>
+<li>create a file <code class="file docutils literal"><span class="pre">.gitignore</span></code> and put there the following line (directory containing the PyCharm project settings)</li>
+</ul>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>.idea
+</pre></div>
+</div>
+</div>
+<div class="section" id="virtualenv">
+<h2>virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref py py-mod docutils literal"><span class="pre">virtualenv</span></code> is a tool to create isolated Python environments.
+It creates an environment that has its own installation directories,
+that doesn’t share libraries with other virtualenv environments
+(and optionally doesn’t access the globally installed libraries either).</p>
+<p>See <a class="reference external" href="https://virtualenv.pypa.io/en/stable/">virtualenv documentation</a> for more.</p>
+<div class="section" id="why-do-we-need-virtual-environments">
+<h3>Why do we need virtual environments<a class="headerlink" href="#why-do-we-need-virtual-environments" title="Permalink to this headline">¶</a></h3>
+<p>Virtualenv allows multiple Python projects that have different (and often conflicting) requirements, to coexist on the same computer.
+It also helps you to keep a track on what third-part libraries are needed for the project to run
+(especially when used with <code class="file docutils literal"><span class="pre">requirements.txt</span></code> files described below)</p>
+</div>
+<div class="section" id="pycharm-setup">
+<h3>PyCharm Setup<a class="headerlink" href="#pycharm-setup" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Go to File -&gt; Settings -&gt; Project -&gt; Project Interpeter -&gt; Gear Icon -&gt; Create VirtualEnv</li>
+<li>Select Python 3.5.x interpreter, give it a meaningful name and click OK</li>
+</ol>
+<img alt="_images/create_venv.png" src="_images/create_venv.png" />
+</div>
+<div class="section" id="installing-packages-into-the-virtual-environment">
+<h3>Installing packages into the virtual environment<a class="headerlink" href="#installing-packages-into-the-virtual-environment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>While in Project Interpreter Settings, click +, search for &#8220;requests&#8221; and click Install Package</li>
+<li>Create a new file and type:</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>See that the import to the newly installed library is correctly resolved</li>
+</ul>
+</div>
+<div class="section" id="working-with-virtualenv-outside-of-ide">
+<h3>Working with virtualenv outside of IDE<a class="headerlink" href="#working-with-virtualenv-outside-of-ide" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Go to the location of your new virtual environment and open the command window there (Shift+Right click -&gt; Open command window here)</li>
+</ul>
+<img alt="_images/run_cmd_here.png" src="_images/run_cmd_here.png" />
+<ul class="simple">
+<li>run</li>
+</ul>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>Scripts\activate.bat
+</pre></div>
+</div>
+<img alt="_images/activate_venv.png" src="_images/activate_venv.png" />
+<ul class="simple">
+<li>the name of the virtual environment (training_venv in this case) displayed before your working directory indicates that the environment is active.</li>
+<li>run python and import the library that is installed in this environment (<a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a>)</li>
+<li>type deactivate to return to the standard environment</li>
+</ul>
+</div>
+</div>
+<div class="section" id="pip">
+<h2>pip<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref py py-mod docutils literal"><span class="pre">pip</span></code> is the recommended tool for installing packages from <a class="reference external" href="http://pypi.python.org/">Python Package Index</a>. PyPI is a repository for open-source third-party Python packages.
+From version 3.4 <code class="xref py py-mod docutils literal"><span class="pre">pip</span></code> is a standard element of python installations.</p>
+<p>See <a class="reference external" href="https://pip.pypa.io/en/stable/">pip documentation</a> for more.</p>
+<p>The basic command to install a package is:</p>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>pip3 install name_of_the_package
+</pre></div>
+</div>
+<p>You can also:</p>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>pip3 uninstall name_of_the_package
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>pip3 install --upgrade name_of_the_package
+</pre></div>
+</div>
+<p>Use <code class="docutils literal"><span class="pre">pip</span></code> for Python2.x (if Python2 is installed and its directory is in PATH)</p>
+<p>PyCharm also uses pip to install additional packages in the Project Interpeter settings window.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If <code class="docutils literal"><span class="pre">pip3</span></code> is not recognized in by your command line, add the <code class="docutils literal"><span class="pre">Scripts</span></code> directory (by default <code class="docutils literal"><span class="pre">C:\Python35-32\Scripts</span></code>) to your <code class="docutils literal"><span class="pre">PATH</span></code> or use <code class="docutils literal"><span class="pre">py</span> <span class="pre">-3</span> <span class="pre">-m</span> <span class="pre">pip</span></code> instead</p>
+</div>
+<div class="section" id="pip-in-virtual-environments">
+<h3>pip in virtual environments<a class="headerlink" href="#pip-in-virtual-environments" title="Permalink to this headline">¶</a></h3>
+<p>To install libraries in a selected virtualenv only, you must activate it first with <code class="docutils literal"><span class="pre">{venv_directory}\\Scripts\\activate.bat</span></code></p>
+</div>
+<div class="section" id="requirements-txt-file">
+<h3>requirements.txt file<a class="headerlink" href="#requirements-txt-file" title="Permalink to this headline">¶</a></h3>
+<p>Requirements files (typically <code class="file docutils literal"><span class="pre">requirements.txt</span></code>) are files containing a list of items to be installed using pip.</p>
+<p>They allow you to create repeatable configuration, that can be shared with other developers working on the project.
+To install all requirements listed in the file use:</p>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>pip3 install -r requirements.txt
+</pre></div>
+</div>
+<p>The file can be created with the freeze command like so:</p>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>pip3 freeze <span class="p">&gt;</span> requirements.txt
+pip3 install -r requirements.txt
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format">Requirements Files Format</a> for details on the syntax.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="project_structure.html" class="btn btn-neutral float-right" title="Project structure" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Piotr Baranowski.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

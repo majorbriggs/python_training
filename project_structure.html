@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Project structure &mdash; Python Training 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Built-in types - good practices" href="builtins.html"/>
+        <link rel="prev" title="Environment configuration" href="environment.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Training
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-if-name-main-section">The <code class="docutils literal"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> section</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-explanation">Detailed explanation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#packages">Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-rules">Importing rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#circular-imports">Circular imports</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Training</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Project structure</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/project_structure.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="project-structure">
+<h1>Project structure<a class="headerlink" href="#project-structure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>A module is a file containing Python code. A a module can be imported into other modules with the <a class="reference external" href="https://docs.python.org/3.5/reference/simple_stmts.html#import" title="(in Python v3.5)"><code class="xref std std-keyword docutils literal"><span class="pre">import</span></code></a>
+The module name is available within the module as a <code class="xref py py-data docutils literal"><span class="pre">__main__</span></code></p>
+<div class="section" id="the-if-name-main-section">
+<h3>The <code class="docutils literal"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> section<a class="headerlink" href="#the-if-name-main-section" title="Permalink to this headline">¶</a></h3>
+<p>You will often see the main part of a script enclosed in such an if block:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;This is executed only if the module is executed directly by python interpreter&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Why do we need it? The short answer is - If you skip the <code class="docutils literal"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> and write some code directly on the top level of the module (not inside a function),
+the code will be executed when you import your module from somewhere else (not run it as the main program). See below for some more details.</p>
+<div class="section" id="detailed-explanation">
+<h4>Detailed explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this headline">¶</a></h4>
+<p>From the best <a class="reference external" href="http://stackoverflow.com/questions/419163/what-does-if-name-main-do">stackoverflow answer</a> on this question:</p>
+<p>When the Python interpreter reads a source file, it executes all of the code found in it.
+Before executing the code, it will define a few special variables.
+For example, if the python interpreter is running that module (the source file) as the main program,
+it sets the special __name__ variable to have a value &#8220;__main__&#8221;.
+If this file is being imported from another module, __name__ will be set to the module&#8217;s name.</p>
+<p>That means, that the code in this block is executed only, if the module is run directly by the interpeter (and not imported into another module)</p>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>python my_module.py
+</pre></div>
+</div>
+<p>and is skipped, when the module is imported</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>Packages allow you to structure your project and access the modules using a dot . notation</p>
+<p>example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package.my_module</span> <span class="kn">import</span> <span class="n">my_function</span>
+</pre></div>
+</div>
+<p>If you want Python to treat a directory as a package (collection of modules or sub-packages),
+it must contain an <code class="file docutils literal"><span class="pre">__init__.py</span></code> file.
+The file can be (and very often is) empty, but it can also contain some initialization code,
+that will be executed on the first import of the package</p>
+<p>example package/directory structure (from <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html#packages">python docs</a>)</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sound/                          Top-level package
+      __init__.py               Initialize the sound package
+      formats/                  Subpackage for file format conversions
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
+              aiffwrite.py
+              auread.py
+              auwrite.py
+              ...
+      effects/                  Subpackage for sound effects
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
+      filters/                  Subpackage for filters
+              __init__.py
+              equalizer.py
+              vocoder.py
+              karaoke.py
+              ...
+</pre></div>
+</div>
+</div>
+<div class="section" id="importing-rules">
+<h2>Importing rules<a class="headerlink" href="#importing-rules" title="Permalink to this headline">¶</a></h2>
+<p>There are multiple ways of importing packages, modules and objects</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1">#  NOT recommended - it will pollute your namespace with objects that you may not need</span>
+<span class="c1"># possibly overwriting the necessary stuff</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">object</span> <span class="kn">import</span> <span class="n">module</span> <span class="k">as</span> <span class="n">some_other_name</span>
+
+<span class="n">some_other_name</span><span class="o">.</span><span class="n">some_function</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="circular-imports">
+<h2>Circular imports<a class="headerlink" href="#circular-imports" title="Permalink to this headline">¶</a></h2>
+<p>Imagine a situation where the module A.module_one imports the module B.module_two which itself imports some object or module from A.
+This is called a Circular import and, even if in some cases executable,
+should be avoided by refactoring the module/packages structure e.g. into smaller, independent pieces.</p>
+<p>A non-resolvable circular import may be indicated by the error message:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>ImportError: cannot import name &#39;some_object&#39;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="builtins.html" class="btn btn-neutral float-right" title="Built-in types - good practices" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="environment.html" class="btn btn-neutral" title="Environment configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Piotr Baranowski.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Working with APIs &mdash; Python Training 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/>
+        <link rel="next" title="*args and **kwargs" href="arguments.html"/>
+        <link rel="prev" title="HTTP in Python with requests" href="requests.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Training
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Working with APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#jira-api">JIRA API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#access-jira-api-with-requests">Access JIRA API with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#language-specific-api-wrappers">Language specific API wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#excercise-api00-get-a-list-of-all-issues-from-a-jql-query">Excercise API00: Get a list of all issues from a JQL query</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tasks">Tasks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Training</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Working with APIs</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="working-with-apis">
+<h1>Working with APIs<a class="headerlink" href="#working-with-apis" title="Permalink to this headline">¶</a></h1>
+<p>A web API is a set of  programming instructions and standards for accessing web
+based software applications. APIs base on exchange of HTTP requests, where both the request and the response contain a standardized set of fields.</p>
+<p>Many APIs have language specific wrappers that simplify their usage, by replacing the exchange of raw HTTP requests with calling methods on API objects in the respective language.</p>
+<div class="section" id="jira-api">
+<h2>JIRA API<a class="headerlink" href="#jira-api" title="Permalink to this headline">¶</a></h2>
+<p>From <a class="reference external" href="https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis?_ga=1.100540766.1506016697.1468406647">JIRA API documentation</a>:</p>
+<blockquote class="pull-quote">
+<div><p>The Atlassian REST APIs provide a standard interface for interacting with JIRA and our other applications.</p>
+<p>REST APIs provide access to resources (data entities) via URI paths.
+To use a REST API, your application will make an HTTP request and parse the response.
+Your methods will be the standard HTTP methods like GET, PUT, POST and DELETE.
+REST APIs operate over HTTP(s) making it easy to use with any programming language or framework.
+The input and output format for the JIRA REST APIs is JSON.</p>
+</div></blockquote>
+</div>
+<div class="section" id="access-jira-api-with-requests">
+<h2>Access JIRA API with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a><a class="headerlink" href="#access-jira-api-with-requests" title="Permalink to this headline">¶</a></h2>
+<p>JIRA API can be used by making HTTP requests and extracting the information from the JSON response.
+We&#8217;ll start with an example of such approach implemented with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a>. We use a publicly accessible JIRA instance of Apache project.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://issues.apache.org/jira/rest/api/2/issue/ZOOKEEPER-2613&quot;</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+
+<span class="n">json_dict</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="c1"># a standard python dictionary</span>
+<span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_dict</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># to pretty-print with 3 spaces of indentation</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">If the JIRA instance required a login to browse the issue, we would provide the credentials using <code class="docutils literal"><span class="pre">HTTPBasicAuth</span></code></p>
+</div>
+<p>The response from of the above request is a a JSON formatted representation of the JIRA ticket: (excerpt below)</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;ZOOKEEPER-2613&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;expand&quot;</span><span class="p">:</span> <span class="s2">&quot;renderedFields,names,schema,transitions,operations,editmeta,changelog&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13011427&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="nt">&quot;iconUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://issues.apache.org/jira/images/icons/statuses/open.png&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The issue is open and ready for the assignee to start work on it.&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://issues.apache.org/jira/rest/api/2/status/1&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;statusCategory&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://issues.apache.org/jira/rest/api/2/statuscategory/2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;colorName&quot;</span><span class="p">:</span> <span class="s2">&quot;blue-gray&quot;</span>
+         <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;issuetype&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="nt">&quot;iconUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://issues.apache.org/jira/images/icons/issuetypes/bug.png&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A problem which impairs or prevents the functions of the product.&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bug&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://issues.apache.org/jira/rest/api/2/issuetype/1&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;subtask&quot;</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://issues.apache.org/jira/rest/api/2/issue/13011427&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>From wikipedia:</p>
+<p>JSON (canonically pronounced /ˈdʒeɪsən/) is an open-standard format that uses human-readable text to transmit data objects consisting of attribute–value pairs.
+It is the most common data format used for asynchronous browser/server communication, largely replacing XML which is used by AJAX.
+JSON is a language-independent data format. It derives from JavaScript, but as of 2016 many programming languages include code to generate and parse JSON-format data.
+The official Internet media type for JSON is application/json. JSON filenames use the extension .json.</p>
+<p class="last">In Python, json format can be conveniently processed with <a class="reference external" href="https://docs.python.org/3.5/library/json.html#module-json" title="(in Python v3.5)"><code class="xref py py-mod docutils literal"><span class="pre">json</span></code></a> package from the standard library</p>
+</div>
+<p>Data from a JSON response may be loaded to a dictionary for further processing and extraction of the necessary pieces of information.</p>
+<p>For example, use the following code to print the description of the requested ticket:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://issues.apache.org/jira/rest/api/2/issue/ZOOKEEPER-2613&quot;</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+
+<span class="n">json_dict</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">json_dict</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="s1">&#39;description&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="language-specific-api-wrappers">
+<h2>Language specific API wrappers<a class="headerlink" href="#language-specific-api-wrappers" title="Permalink to this headline">¶</a></h2>
+<p>As you could see in the previous examples, APIs can be accessed with any tool or language capable of sending HTTP requests.
+However in most cases it is convenient to simplify the access to an API by encapsulating the operations in some language specific library.
+That&#8217;s why many APIs have their language specific wrappers that allow you to work on Objects and methods insted of raw HTTP requests.</p>
+<p>There is a Python wrapper for JIRA REST API, named <a class="reference external" href="https://jira.readthedocs.io/en/master/api.html#module-jira" title="(in jira-python v1.0.7.dev20161112134044)"><code class="xref py py-mod docutils literal"><span class="pre">jira</span></code></a>.</p>
+<p>Install the module <a class="reference external" href="https://jira.readthedocs.io/en/master/api.html#module-jira" title="(in jira-python v1.0.7.dev20161112134044)"><code class="xref py py-mod docutils literal"><span class="pre">jira</span></code></a> within your virtual environment (using PyCharm or in the command line using <code class="docutils literal"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">jira</span></code>)</p>
+<p>The analogous request for an issue, using the wrapper looks like so:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jira</span> <span class="kn">import</span> <span class="n">JIRA</span>
+
+<span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://issues.apache.org/jira/&quot;</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">JIRA</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">issue</span><span class="p">(</span><span class="s1">&#39;ZOOKEEPER-2613&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, the issue is an object, with fields corresponding to the sub-dictionaries of the original JSON response.
+API wrappers offer many methods that significantly simplify the interaction with the API.</p>
+</div>
+<div class="section" id="excercise-api00-get-a-list-of-all-issues-from-a-jql-query">
+<h2>Excercise API00: Get a list of all issues from a JQL query<a class="headerlink" href="#excercise-api00-get-a-list-of-all-issues-from-a-jql-query" title="Permalink to this headline">¶</a></h2>
+<p>Use JIRA API wrapper to get a list of all issues from a JQL query (e.g. by issue type)</p>
+<div class="section" id="tasks">
+<h3>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Check the documentation of <a class="reference external" href="https://jira.readthedocs.io/en/master/api.html#module-jira" title="(in jira-python v1.0.7.dev20161112134044)"><code class="xref py py-mod docutils literal"><span class="pre">jira</span></code></a> to see how to execute a JQL query</li>
+<li>Print the summaries of all found issues.</li>
+</ol>
+<p><a class="reference internal" href="solutions_proxy.html#api00-solution"><span class="std std-ref">Solution to API00</span></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="arguments.html" class="btn btn-neutral float-right" title="*args and **kwargs" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="requests.html" class="btn btn-neutral" title="HTTP in Python with requests" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Piotr Baranowski.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

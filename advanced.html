@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced concepts &mdash; Python Training 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Logging" href="logging.html"/>
+        <link rel="prev" title="Common Python gotchas" href="gotchas.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Training
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#magic-methods-in-classes">Magic methods in classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#string-representation-of-a-class">String representation of a class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operator-overloading">Operator overloading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions-are-objects">Functions are objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#excercise-adv00-functions-are-objects-wait-until-method">Excercise: ADV00: Functions are objects - <code class="docutils literal"><span class="pre">wait_until</span></code> method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tasks">Tasks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Training</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Advanced concepts</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/advanced.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="advanced-concepts">
+<h1>Advanced concepts<a class="headerlink" href="#advanced-concepts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="magic-methods-in-classes">
+<h2>Magic methods in classes<a class="headerlink" href="#magic-methods-in-classes" title="Permalink to this headline">¶</a></h2>
+<p><em>Magic methods</em> are special methods in classes that have names starting and ending with double underscore.</p>
+<p>The most commonly used special method is <code class="docutils literal"><span class="pre">__init__()</span></code> called after an instance of a class is created.</p>
+<p>Using other special methods you can make your classes behave like dictionaries, sets, functions, iterators, numbers etc.</p>
+<div class="section" id="string-representation-of-a-class">
+<h3>String representation of a class<a class="headerlink" href="#string-representation-of-a-class" title="Permalink to this headline">¶</a></h3>
+<p>By defining <code class="docutils literal"><span class="pre">__repr__()</span></code> method your class gets an official custom representation as a string.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClassWithRepr</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;This is my class&quot;</span>
+
+<span class="k">class</span> <span class="nc">MyClassWithoutRepr</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">MyClassWithoutRepr</span><span class="p">()</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">MyClassWithRepr</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># -&gt; &lt;__main__.MyClassWithoutRepr object at 0x00B5A530&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="c1"># -&gt; This is my class</span>
+</pre></div>
+</div>
+<p>Additionally, there is also a  <code class="docutils literal"><span class="pre">__str__()</span></code> method which called when you print the object or execute <code class="docutils literal"><span class="pre">str(obj)</span></code>.
+But if <code class="docutils literal"><span class="pre">__repr__</span></code> is defined, and <code class="docutils literal"><span class="pre">__str__</span></code> is not, the object will behave as if <code class="docutils literal"><span class="pre">__str__=__repr__</span></code></p>
+</div>
+<div class="section" id="operator-overloading">
+<h3>Operator overloading<a class="headerlink" href="#operator-overloading" title="Permalink to this headline">¶</a></h3>
+<p>By overriding the special methods you can also allow the objects of your classes to be added, subtracted, devided or compared.
+Consider the example below, keeping in mind that there are probably better ways to work with vectors and matrices in Python than DIY classes like this one. (like&nbsp;<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.11)"><code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code></a>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector1D</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vector1D can store only integer values&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">=</span> <span class="n">args</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span>
+
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span> <span class="c1"># + operator</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector1D</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expected Vector1D, instead got {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">__class__</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">_values</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Added vectors have to have the same lenght&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">_values</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span> <span class="c1"># == operator</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_values</span> <span class="c1"># != operator</span>
+
+    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">_values</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">Vector1D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">Vector1D</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">A</span> <span class="o">==</span> <span class="n">B</span><span class="p">)</span> <span class="c1"># -&gt; False</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="c1"># -&gt; [6, 8, 10, 12]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="functions-are-objects">
+<h2>Functions are objects<a class="headerlink" href="#functions-are-objects" title="Permalink to this headline">¶</a></h2>
+<p>Everything is an object in Python, even types like int, str, or <em>functions</em> are objects. We will concentrate now on consequences of the latter.</p>
+<p>It is often said that functions are <strong>first class objects</strong> in Python, which means that there are no restrictions on their usage as objects.
+As such, they can be created, destroyed, passed as an argument or returned by another function with a <a class="reference external" href="https://docs.python.org/3.5/reference/simple_stmts.html#return" title="(in Python v3.5)"><code class="xref std std-keyword docutils literal"><span class="pre">return</span></code></a> statement.</p>
+<p>Let&#8217;s consider the following example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">make_sound_method</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">make_sound</span> <span class="o">=</span> <span class="n">make_sound_method</span>
+
+
+<span class="k">def</span> <span class="nf">quack</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Quack!&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">moo</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Moooo!&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">bah</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Bah!&#39;</span><span class="p">)</span>
+
+
+<span class="n">bah</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Sheep&#39;</span><span class="p">,</span> <span class="n">make_sound_method</span><span class="o">=</span><span class="n">bah</span><span class="p">)</span>
+
+<span class="n">bah</span><span class="o">.</span><span class="n">make_sound</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>The above is an example of <strong>Strategy</strong> design pattern. In this pattern:</p>
+<ul class="last simple">
+<li>there is a set of predefined algorithms (here different sound methods, <code class="docutils literal"><span class="pre">moo</span></code>, <code class="docutils literal"><span class="pre">quack</span></code>, <code class="docutils literal"><span class="pre">bah</span></code>)</li>
+<li>the object has a &#8220;placeholder&#8221; field - a method in its interface, that can execute different algoritms (here <code class="docutils literal"><span class="pre">make_sound()</span></code>,</li>
+<li>The algorithm that is used on call of the method is selected from the set of predefined algorithms on runtime.</li>
+</ul>
+</div>
+<p>As you see, any function can be used as an object (for example to assign it to some other variable), by refering to it without the parentheses ().</p>
+<p>To make it clear:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello&quot;</span>
+
+
+<span class="n">hello</span> <span class="o">=</span> <span class="n">some_function</span><span class="p">()</span>
+<span class="n">hello_func</span> <span class="o">=</span> <span class="n">some_function</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
+<span class="c1"># -&gt; Hello</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">hello_func</span><span class="p">)</span>
+<span class="c1"># -&gt; &lt;function some_function at 0x01290DF8&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">hello_func</span><span class="p">())</span>
+<span class="c1"># -&gt; Hello</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="excercise-adv00-functions-are-objects-wait-until-method">
+<h2>Excercise: ADV00: Functions are objects - <code class="docutils literal"><span class="pre">wait_until</span></code> method<a class="headerlink" href="#excercise-adv00-functions-are-objects-wait-until-method" title="Permalink to this headline">¶</a></h2>
+<p>To see some real benefit from passing functions as arguments to other functions, let&#8217;s implement a custom <code class="docutils literal"><span class="pre">wait_until()</span></code> function that will check a given condition until timeout is expired.</p>
+<div class="section" id="tasks">
+<h3>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>Write an implementation of a wait_until function according to the following docstring</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wait_until</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wait until the condition returned by &#39;condition&#39; function is fulfilled,</span>
+<span class="sd">    or the timeout is expired. The condition should be checked every 100ms</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        condition: a function that checks a condition and returns True or False</span>
+<span class="sd">        timeout: maximal timeout after which the function will raise TimeoutException</span>
+<span class="sd">                or return False (if raise_exception is False)</span>
+<span class="sd">        msg: message added to the TimeoutException</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        True when the condition is fulfilled within the timeout,</span>
+<span class="sd">        False when the condition is not fulfilled within the timeout</span>
+<span class="sd">                and &#39;raise_exception&#39; is False</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        TimeoutException: if raise_exception is True</span>
+<span class="sd">                        and the condition is not fulfilled within timeout</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Use the method <a class="reference external" href="https://docs.python.org/3.5/library/time.html#time.time" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">time.time()</span></code></a> to get the current time.</p>
+</div>
+<p><a class="reference internal" href="solutions_proxy.html#adv00-solution"><span class="std std-ref">Solution to ADV00</span></a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="logging.html" class="btn btn-neutral float-right" title="Logging" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gotchas.html" class="btn btn-neutral" title="Common Python gotchas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Piotr Baranowski.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Common Python gotchas &mdash; Python Training 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Advanced concepts" href="advanced.html"/>
+        <link rel="prev" title="*args and **kwargs" href="arguments.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Training
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Common Python gotchas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-exactly-are-variables-in-python">What exactly are variables in Python?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#variables-as-labels-of-objects">Variables as &#8220;labels&#8221; of objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-create-a-real-copy-of-an-object">How to create a <strong>real</strong> copy of an object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mutable-default-arguments">Mutable default arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-are-mutable-and-immutable-objects">What are mutable and immutable objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mutable-objects-as-defaults-for-function-arguments">Mutable objects as defaults for function arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#boolean-expressions-and-logical-operators">Boolean expressions and logical operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#testing-for-truth-value">Testing for Truth value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#and-and-or-operators"><code class="docutils literal"><span class="pre">and</span></code> and <code class="docutils literal"><span class="pre">or</span></code> operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Python Training</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Common Python gotchas</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/gotchas.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="common-python-gotchas">
+<h1>Common Python gotchas<a class="headerlink" href="#common-python-gotchas" title="Permalink to this headline">¶</a></h1>
+<p>Situations where Python way of doing things is not what we may expect</p>
+<div class="section" id="what-exactly-are-variables-in-python">
+<h2>What exactly are variables in Python?<a class="headerlink" href="#what-exactly-are-variables-in-python" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s consider the following piece of code</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">first_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">second_list</span> <span class="o">=</span> <span class="n">first_list</span>
+
+<span class="n">second_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">)</span> <span class="c1"># [1, 2, 3, 4]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">l1</span> <span class="ow">is</span> <span class="n">l2</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l1</span> <span class="o">==</span> <span class="n">l2</span><span class="p">)</span> <span class="c1"># True</span>
+</pre></div>
+</div>
+<p>You might expect to see in the end the original content of the list <code class="docutils literal"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>.</p>
+<p>Instead, both <code class="docutils literal"><span class="pre">second_list</span></code> and and <code class="docutils literal"><span class="pre">first_list</span></code> are references to the same list object. Why is it so?</p>
+<div class="section" id="variables-as-labels-of-objects">
+<h3>Variables as &#8220;labels&#8221; of objects<a class="headerlink" href="#variables-as-labels-of-objects" title="Permalink to this headline">¶</a></h3>
+<p>If you have any experience from other popular programming languages, you may expect that in statements like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> would be some places in memory, that upon the execution of these lines get &#8220;filled&#8221; with the appropriate values (a list, a number and the same number respectively)</p>
+<p>But that&#8217;s is <strong>not</strong> how things work in Python.</p>
+<p><code class="docutils literal"><span class="pre">x</span></code> or any variable is only a label, assigned to an object as a reference (to the list <code class="docutils literal"><span class="pre">['Bob',</span> <span class="pre">'Alice']</span></code> in this case) ,
+and on the next line, the same &#8220;label&#8221; is re-assigned to another object - the number <code class="docutils literal"><span class="pre">1</span></code>.
+Both these objects (the list and the number) can have multiple variables assigned to them and may continue to exist even if <code class="docutils literal"><span class="pre">x</span></code> or <code class="docutils literal"><span class="pre">y</span></code> do not refer to them anymore.</p>
+<p>In practice these <em>objects</em> exist until there is at least one <em>variable</em> refering to them. It may be confusing, so let&#8217;s see another example:</p>
+<p>So again, by executing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>we do not put the list to some place in memory named x, instead, we create a new list object [&#8220;Bob&#8221;, &#8220;Alice&#8221;] somewhere in the memory and label it with the variable <code class="docutils literal"><span class="pre">x</span></code>.
+The variable can be reassigned to some other object, but the list may still exist, if there are other variables referencing to it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Bob&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> are not separate objects. They are separate &#8220;labels&#8221; pointing to the same string object <code class="docutils literal"><span class="pre">&quot;Bob&quot;</span></code></p>
+<div class="figure align-center" id="id1">
+<span id="fig2vars1obj"></span><img alt="_images/objects_1.png" src="_images/objects_1.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Both variables are assigned to the same object</span></p>
+</div>
+<p>Now now reassign the variable <code class="docutils literal"><span class="pre">b</span></code> to another string object <code class="docutils literal"><span class="pre">&quot;Alice&quot;</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;Alice&quot;</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id2">
+<span id="fig2vars2obj"></span><img alt="_images/objects_2.png" src="_images/objects_2.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Second variable is reassigned to another object.</span></p>
+</div>
+<p>Let&#8217;s go back to the original example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">first_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">second_list</span> <span class="o">=</span> <span class="n">first_list</span>
+
+<span class="n">second_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Exactly like in the previous example, both varialbes <code class="docutils literal"><span class="pre">first_list</span></code> and <code class="docutils literal"><span class="pre">second_list</span></code> are assigned to the same object in memory (like in <a class="reference internal" href="#fig2vars1obj"><span class="std std-numref">Fig. 1</span></a>)
+As list are <strong>mutable</strong> objects, they can be changed &#8220;in place&#8221;. We append a new element to the list that is referenced by both <code class="docutils literal"><span class="pre">first_list</span></code> and <code class="docutils literal"><span class="pre">second_list</span></code>, no matter which variable we use in the append method on.</p>
+</div>
+<div class="section" id="how-to-create-a-real-copy-of-an-object">
+<h3>How to create a <strong>real</strong> copy of an object<a class="headerlink" href="#how-to-create-a-real-copy-of-an-object" title="Permalink to this headline">¶</a></h3>
+<p>To create a copy of an object, separate and independent from the original variable you can use:
+<a class="reference external" href="https://docs.python.org/3.5/library/copy.html#copy.copy" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">copy.copy()</span></code></a> and <a class="reference external" href="https://docs.python.org/3.5/library/copy.html#copy.deepcopy" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">copy.deepcopy()</span></code></a></p>
+<p>From python docs:</p>
+<p>The difference between shallow and deep copying is only relevant for compound objects (objects that contain other objects, like lists or class instances):</p>
+<ul class="simple">
+<li>A shallow copy constructs a new compound object and then (to the extent possible) inserts references into it to the objects found in the original.</li>
+<li>A deep copy constructs a new compound object and then, recursively, inserts copies into it of the objects found in the original.</li>
+</ul>
+<p>alternatively, a copy of a list is often created with slicing</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">l2</span> <span class="o">=</span> <span class="n">l1</span><span class="p">[:]</span> <span class="c1"># returns a &quot;slice&quot; with all elements of l1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">l1</span> <span class="ow">is</span> <span class="n">l2</span><span class="p">)</span> <span class="c1"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l1</span> <span class="o">==</span> <span class="n">l2</span><span class="p">)</span> <span class="c1"># True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mutable-default-arguments">
+<h2>Mutable default arguments<a class="headerlink" href="#mutable-default-arguments" title="Permalink to this headline">¶</a></h2>
+<p>The most common and controversial example of an &#8216;unusual&#8217; behavior of Python is how default mutable arguments are evaluated.</p>
+<div class="section" id="what-are-mutable-and-immutable-objects">
+<h3>What are mutable and immutable objects<a class="headerlink" href="#what-are-mutable-and-immutable-objects" title="Permalink to this headline">¶</a></h3>
+<p>Mutable objects in Python are the ones that can be changed &#8220;in place&#8221;, so that the a method called on the object acts <strong>on the object itself</strong>, and does not return a new object.
+For example, you can use <code class="docutils literal"><span class="pre">some_list.append('new_element')</span></code> to add a new element to <code class="docutils literal"><span class="pre">some_list</span></code>, the method does not return a new list, but changes the original object referenced by <code class="docutils literal"><span class="pre">some_list</span></code>.</p>
+<dl class="docutils">
+<dt>Immutable types:</dt>
+<dd><ul class="first last simple">
+<li>Numeric types: int, float, complex</li>
+<li>string</li>
+<li>tuple</li>
+<li>frozen set</li>
+<li>bytes</li>
+</ul>
+</dd>
+<dt>Mutable type:</dt>
+<dd><ul class="first last simple">
+<li>list</li>
+<li>dict</li>
+<li>set</li>
+<li>byte array</li>
+</ul>
+</dd>
+</dl>
+<p>Consider the following examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># mutable, there is no i.increment() method available</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;some text&#39;</span>  <span class="c1"># there is no method that would allow you to &quot;mutate&quot; the object itself</span>
+<span class="c1"># all methods like string.split() or string.replace() return a *NEW* string</span>
+<span class="n">changed_string</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;some&#39;</span><span class="p">,</span> <span class="s1">&#39;some_other&#39;</span><span class="p">)</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># l is still the same object, but mutated (one element longer)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mutable-objects-as-defaults-for-function-arguments">
+<h3>Mutable objects as defaults for function arguments<a class="headerlink" href="#mutable-objects-as-defaults-for-function-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s say we want to implement a function that expects a string and a list as its arguments.
+The function should append the string to the list and return the resulting list.
+Additionally, both of the arguments should have a default value. Default value for the &#8220;list&#8221; argument should be an empty list.</p>
+<p>You may want to write something along these lines:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_vegetable</span><span class="p">(</span><span class="n">vegetable</span><span class="o">=</span><span class="s1">&#39;carrot&#39;</span><span class="p">,</span> <span class="n">list_of_vegetables</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">list_of_vegetables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vegetable</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">list_of_vegetables</span>
+
+<span class="n">first_list</span> <span class="o">=</span> <span class="n">add_vegetable</span><span class="p">()</span>
+<span class="n">second_list</span> <span class="o">=</span> <span class="n">add_vegetable</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">second_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The &#8220;common-sense&#8221; interpretation of this code would be:</p>
+<dl class="docutils">
+<dt>Every time <code class="docutils literal"><span class="pre">add_vegetable</span></code> is called and the both arguments of the function are ommited:</dt>
+<dd><ol class="first last arabic simple">
+<li><code class="docutils literal"><span class="pre">vegetable</span></code> variable will be bound to a string object containing <code class="docutils literal"><span class="pre">&quot;carrot&quot;</span></code></li>
+<li><code class="docutils literal"><span class="pre">list_of_vegetables</span></code> will be bound to an empty list</li>
+</ol>
+</dd>
+</dl>
+<p>If you execute the code above, you may expect to see a result like:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[&#39;carrot&#39;]
+[&#39;banana&#39;]
+</pre></div>
+</div>
+<p>But instead you get</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[&#39;carrot&#39;, &#39;banana&#39;]
+[&#39;carrot&#39;, &#39;banana&#39;]
+</pre></div>
+</div>
+<p>This is because <strong>Python evaluates the default values only once, when the function is defined</strong> and not each time it is called.
+Therefore, all subsequent calls of <code class="docutils literal"><span class="pre">add_vegetables()</span></code> are using the same object, which each time is mutated by the function.</p>
+<p>Another important thing to notice here is that we didn&#8217;t get the following either:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[&#39;carrot&#39;]
+[&#39;carrot&#39;, &#39;banana&#39;]
+</pre></div>
+</div>
+<p>This is because both <code class="docutils literal"><span class="pre">first_list</span></code> and <code class="docutils literal"><span class="pre">second_list</span></code> are not separate objects, they are only
+&#8220;tags&#8221; that point to the same object in the memory (the default argument of <code class="docutils literal"><span class="pre">add_vegetables</span></code>)
+therefore, when the default <code class="docutils literal"><span class="pre">list_of_vegetables</span></code> is changed, each variable that &#8220;points&#8221; to this object will return the changed value</p>
+<p>What should be done to get the expected behavior is</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_vegetable_correctly</span><span class="p">(</span><span class="n">vegetable</span><span class="p">,</span> <span class="n">list_of_vegetables</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">list_of_vegetables</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">list_of_vegetables</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">list_of_vegetables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vegetable</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">list_of_vegetables</span>
+
+<span class="n">first_list</span> <span class="o">=</span> <span class="n">add_vegetable_correctly</span><span class="p">(</span><span class="s1">&#39;carrot&#39;</span><span class="p">)</span>
+<span class="n">second_list</span> <span class="o">=</span> <span class="n">add_vegetable_correctly</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">second_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This time we really get</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>[&#39;carrot&#39;]
+[&#39;banana&#39;]
+</pre></div>
+</div>
+<p>The general rules are:</p>
+<ol class="arabic simple">
+<li>Don&#8217;t use mutables (strings or lists) as default arguments</li>
+<li>Unless you have a good reason to</li>
+<li>In all other cases, use <code class="docutils literal"><span class="pre">None</span></code>, check for it and create the empty list or string inside the body of the function</li>
+</ol>
+<p>Read more on <a class="reference external" href="https://pythonconquerstheuniverse.wordpress.com/2012/02/15/mutable-default-arguments/">Python Conquers The Universe</a></p>
+</div>
+</div>
+<div class="section" id="boolean-expressions-and-logical-operators">
+<h2>Boolean expressions and logical operators<a class="headerlink" href="#boolean-expressions-and-logical-operators" title="Permalink to this headline">¶</a></h2>
+<p>Boolean operations do not return only True or False values. To get the concept, let&#8217;s consider what Python considers to by a &#8220;truth&#8221;.</p>
+<div class="section" id="testing-for-truth-value">
+<h3>Testing for Truth value<a class="headerlink" href="#testing-for-truth-value" title="Permalink to this headline">¶</a></h3>
+<p>In python, every object can have a &#8220;truth&#8221; value assigned and therefore be used in <code class="docutils literal"><span class="pre">if</span></code> statements, <code class="docutils literal"><span class="pre">while</span></code> loops and boolean operations:</p>
+<dl class="docutils">
+<dt>The values considered false are:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">None</span></code></li>
+<li><code class="docutils literal"><span class="pre">False</span></code></li>
+<li>Zero of any numeric type (int, float, complex)</li>
+<li>Empty sequences (lists, tuples, sets)</li>
+<li>Empty dicts</li>
+<li>instances of user-defined classes, if the class defines a <code class="docutils literal"><span class="pre">__nonzero__()</span></code> or <code class="docutils literal"><span class="pre">__len__()</span></code> method, when that method returns the integer zero or bool value False</li>
+</ul>
+</dd>
+</dl>
+<p>All other values are considered true.</p>
+<p>That is why it&#8217;s possible (and also considered to be a good practice) to use this language feature in the truth tests like so:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">some_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="k">if</span> <span class="n">some_string</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;The string is not empty&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Instead of testing the condition explicitly, which is in this case superfluous.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">some_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">if</span> <span class="n">some_string</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;The string is not empty&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="and-and-or-operators">
+<h3><code class="docutils literal"><span class="pre">and</span></code> and <code class="docutils literal"><span class="pre">or</span></code> operators<a class="headerlink" href="#and-and-or-operators" title="Permalink to this headline">¶</a></h3>
+<p>Python offers a useful, but somehow specific evaluation of the boolean <code class="docutils literal"><span class="pre">and</span></code> and <code class="docutils literal"><span class="pre">or</span></code> boolean operators</p>
+<p>Consider the following example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x</span> <span class="ow">or</span> <span class="n">y</span>  <span class="c1"># returns 1</span>
+<span class="n">x</span> <span class="ow">and</span> <span class="n">y</span> <span class="c1"># returns []</span>
+<span class="n">y</span> <span class="ow">or</span> <span class="n">x</span> <span class="c1"># returns 1</span>
+</pre></div>
+</div>
+<p>In general <code class="docutils literal"><span class="pre">or</span></code> and <code class="docutils literal"><span class="pre">and</span></code> do <strong>not</strong> return <code class="docutils literal"><span class="pre">True</span></code> or <code class="docutils literal"><span class="pre">False</span></code>, but the value of the last evaluated element.</p>
+<p>which means in particular (from <a class="reference external" href="https://docs.python.org/3.5/library/stdtypes.html#boolean-operations-and-or-not">Python Docs</a>)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="54%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Result</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>x or y</td>
+<td>if x is false, then y, else x</td>
+<td><cite>(1)</cite></td>
+</tr>
+<tr class="row-odd"><td>x and y</td>
+<td>if x is false, then x, else y</td>
+<td><cite>(2)</cite></td>
+</tr>
+<tr class="row-even"><td>not x</td>
+<td>if x is false, then True, else False</td>
+<td><cite>(3)</cite></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ol class="arabic simple">
+<li>This is a short-circuit operator, so it only evaluates the second argument if the first one is False.</li>
+<li>This is a short-circuit operator, so it only evaluates the second argument if the first one is True.</li>
+<li>not has a lower priority than non-Boolean operators, so not a == b is interpreted as not (a == b), and a == not b is a syntax error.</li>
+</ol>
+<p>This pattern can be used as a shortcut when setting default values</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">default_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">some_other_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">new_list</span> <span class="o">=</span> <span class="n">some_other_list</span> <span class="ow">or</span> <span class="n">default_list</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">new_list</span> <span class="ow">is</span> <span class="n">default_list</span><span class="p">)</span> <span class="c1"># -&gt; True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="advanced.html" class="btn btn-neutral float-right" title="Advanced concepts" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="arguments.html" class="btn btn-neutral" title="*args and **kwargs" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Piotr Baranowski.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
