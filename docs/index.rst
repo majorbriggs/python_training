@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to AF/P-Q Python Intermediate Training!
+Welcome to Python Intermediate Training!
 ==========================================================
 
 Contents:
@@ -22,7 +22,8 @@ Contents:
    api
    arguments
    gotchas
-   advanced
+   decorators
+   magic_methods
    logging
    docs
    solutions

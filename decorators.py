@@ -1,11 +1,16 @@
-def log(func):
+from functools import wraps
+
+
+def verbose(func):
+
+    @wraps(func)
     def wrapper(*args, **kwargs):
-        print("{} start".format(func.__name__))
+        print("{} function starts".format(func.__name__))
         func(*args, **kwargs)
-        print("{} stop".format(func.__name__))
+        print("{} function finished".format(func.__name__))
     return wrapper
 
-@log
+@verbose
 def print_something():
     print("Test")
 
@@ -23,6 +28,7 @@ def tags(tag_name):
 
 @tags('div')
 @tags('p')
+@tags('span')
 @tags('strong')
 def greet(name):
     return "Hello " + name

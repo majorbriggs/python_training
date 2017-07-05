@@ -1,97 +1,8 @@
-Advanced concepts
+Decorators
 ========================
 
-
-Magic methods in classes
----------------------------------
-
-*Magic methods* are special methods in classes that have names starting and ending with double underscore.
-
-The most commonly used special method is ``__init__()`` called after an instance of a class is created.
-
-Using other special methods you can make your classes behave like dictionaries, sets, functions, iterators, numbers etc.
-
-String representation of a class
-++++++++++++++++++++++++++++++++++++++
-
-
-By defining ``__repr__()`` method your class gets an official custom representation as a string.
-
-.. code-block:: python
-
-    class MyClassWithRepr():
-        def __init__(self):
-            pass
-
-        def __repr__(self):
-            return "This is my class"
-
-    class MyClassWithoutRepr():
-
-        def __init__(self):
-            pass
-
-
-    x = MyClassWithoutRepr()
-
-    y = MyClassWithRepr()
-
-    print(x)
-    # -> <__main__.MyClassWithoutRepr object at 0x00B5A530>
-
-    print(y)
-    # -> This is my class
-
-Additionally, there is also a  ``__str__()`` method which called when you print the object or execute ``str(obj)``.
-But if ``__repr__`` is defined, and ``__str__`` is not, the object will behave as if ``__str__=__repr__``
-
-
-Operator overloading
-+++++++++++++++++++++++++++++++++++
-
-By overriding the special methods you can also allow the objects of your classes to be added, subtracted, devided or compared.
-Consider the example below, keeping in mind that there are probably better ways to work with vectors and matrices in Python than DIY classes like this one. (like |nbsp| :py:mod:`numpy`)
-
-.. code-block:: python
-
-    class Vector1D():
-
-        def __init__(self, *args):
-            for arg in args:
-                if not isinstance(arg, int):
-                    raise ValueError("Vector1D can store only integer values")
-
-            self._values = args
-
-        def __str__(self):
-            return self._values
-
-        def __add__(self, other): # + operator
-            if not isinstance(other, Vector1D):
-                raise ValueError('Expected Vector1D, instead got {}'.format(other.__class__))
-
-            if len(self._values) != len(other._values):
-                raise ValueError('Added vectors have to have the same lenght')
-
-            return [i + j for i, j in zip(self._values, other._values)]
-
-        def __eq__(self, other): # == operator
-            return self._values == other._values # != operator
-
-        def __ne__(self, other):
-            return self._values != other._values
-
-    A = Vector1D(1, 2, 3, 4)
-
-    B = Vector1D(5, 6, 7, 8)
-
-    C = A + B
-
-    print(A == B) # -> False
-
-    print(C)
-    # -> [6, 8, 10, 12]
-
+Decorators allow to dynamically extend the behavior of a function or functions they are applied to, without the need to
+modify the function itself. To understand how they are implemented in Python, let's start with some introductory concepts.
 
 Functions are objects
 --------------------------
@@ -138,7 +49,7 @@ Let's consider the following example:
 
 As you see, any function can be used as an object (for example to assign it to some other variable), by refering to it without the parentheses ().
 
-To make it clear:
+Please consider the differences in the following calls:
 
 .. code-block:: python
 
@@ -159,7 +70,16 @@ To make it clear:
     # -> Hello
 
 
-Excercise: ADV00: Functions are objects - ``wait_until`` method
+Excercise: DEC00: Implement a simple strategy pattern
+---------------------------------------------------
+
+Following the example above, implement a simple class that will realize the Strategy pattern.
+
+Write three functions that will simulate different processing algorithms (they can all be a single print() statement)
+The class should have one method "process" which will be initiated with one of the three possible algorithms
+
+
+Excercise: DEC01: Functions are objects - ``wait_until`` method
 ---------------------------------------------------------------
 
 To see some real benefit from passing functions as arguments to other functions, let's implement a custom ``wait_until()`` function that will check a given condition until timeout is expired.
@@ -194,4 +114,4 @@ Write an implementation of a wait_until function according to the following docs
 
     Use the method :py:func:`time.time` to get the current time.
 
-:ref:`ADV00_solution`
+:ref:`DEC01_solution`

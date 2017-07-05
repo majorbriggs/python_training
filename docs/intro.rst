@@ -1,7 +1,7 @@
 Introduction
 ==================
 
-Welcome to the AF/P-Q Python Training!
+Welcome to Python Intermediate Training!
 As the training will cover "intermediate level" concepts, the participants are assumed to have already learned the basics of Python programming language.
 For a general introduction to the language, the basic keywords and data types (lists, dictionaries, strings, tuples etc...), see one of the following resources:
 

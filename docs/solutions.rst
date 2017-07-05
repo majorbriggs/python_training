@@ -224,9 +224,9 @@ Observing the fields of a subtask we can find the field ``parent`` which should 
 
 
 
-.. _ADV00_solution:
+.. _DEC01_solution:
 
-Solution to ADV00
+Solution to DEC01
 --------------------
 
 

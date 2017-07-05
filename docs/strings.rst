@@ -2,12 +2,19 @@ String formatting
 ======================
 
 
-There are two popular ways to format strings in Python
+There are multiple ways to format strings in Python
 
 - string :py:meth:`str.format` method
-- ``%`` notation
+- since Python 3.6: formatted string literals
+- ``%`` notation - similar to `String.format` from Java
 
-We will cover here only the first method, as it is now considered to be the standard and recommended way.
+We will cover here only the first two methods, as they are now considered be the standard/recommended way.
+
+
+:py:meth:`str.format` method
+----------------------------------
+
+This is the recommended method for Python < 3.6
 
 The basic syntax is:
 
@@ -56,3 +63,26 @@ To specify number precision and width of the whole substring use the following s
 - ``3`` digits of precision
 - ``10`` is the width of the whole "substring"
 - ``f`` as it is a floating point number.
+
+
+
+Formatted string literals
+----------------------------------
+
+This method was first introduced in Python 3.6 with PEP 498
+
+Formatted string literals (or f-strings) are prefixed with `f` and use a similar format to :py:meth:`str.format` method.
+
+example:
+
+.. code-block:: python
+
+    name = "Bob"
+    age = 23
+    hobbies = ['Python', 'Programming', 'Tomb Raider']
+
+    f_string = f"My name is {name}. I am {age} years old. My hobbies are {hobbies}"
+
+    print(f_string)
+
+    # My name is Bob. I am 23 years old. My hobbies are ['Python', 'Programming', 'Tomb Raider']
