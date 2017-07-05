@@ -1,3 +1,5 @@
+.. _magic:
+
 Magic methods
 ----------------
 
@@ -7,11 +9,12 @@ The most commonly used special method is ``__init__()`` called after an instance
 
 Using other special methods you can make your classes behave like dictionaries, sets, functions, iterators, numbers etc.
 
+
 String representation of a class
 ++++++++++++++++++++++++++++++++++++++
 
 
-By defining ``__repr__()`` method your class gets an official custom representation as a string.
+By defining ``__repr__(self)`` method your class gets a custom representation as a string.
 
 .. code-block:: python
 
@@ -39,7 +42,9 @@ By defining ``__repr__()`` method your class gets an official custom representat
     # -> This is my class
 
 Additionally, there is also a  ``__str__()`` method which called when you print the object or execute ``str(obj)``.
-But if ``__repr__`` is defined, and ``__str__`` is not, the object will behave as if ``__str__=__repr__``
+But if ``__repr__`` is defined, and ``__str__`` is not, the object will behave as if ``__str__=__repr__``, but not vice versa.
+
+see `stack overflow <https://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python>`_ for more information on differences between theese two.
 
 
 Operator overloading

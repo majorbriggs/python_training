@@ -266,3 +266,36 @@ Working script
             raise TimeoutError("Condition not fulfilled within timeout. Message: " + msg)
         else:
             return True
+
+
+
+.. _DEC02_solution:
+
+Solution to DEC02
+--------------------
+
+
+Working script
++++++++++++++++++
+
+
+.. code-block:: python
+
+    def tags(tag_name):
+        def tags_decorator(func):
+            @wraps(func)
+            def wrapper(*args, **kwargs):
+                result = func(*args, **kwargs)
+                return "<{tag_name}>{result}</{tag_name}>".format(tag_name=tag_name, result=result)
+            return wrapper
+        return tags_decorator
+
+    @tags('div')
+    @tags('p')
+    @tags('span')
+    @tags('strong')
+    def greet(name):
+        return "Hello " + name
+
+
+print(greet("My Friend"))

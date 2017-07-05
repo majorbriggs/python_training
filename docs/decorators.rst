@@ -18,21 +18,21 @@ Let's consider the following example:
 .. code-block:: python
 
     class Animal():
-    def __init__(self, name, make_sound_method):
-        self.name = name
-        self.make_sound = make_sound_method
+        def __init__(self, name, make_sound_method):
+            self.name = name
+            self.make_sound = make_sound_method
 
 
-    def quack():
-        print('Quack!')
+        def quack():
+            print('Quack!')
 
 
-    def moo():
-        print('Moooo!')
+        def moo():
+            print('Moooo!')
 
 
-    def bah():
-        print('Bah!')
+        def bah():
+            print('Bah!')
 
 
     bah = Animal(name='Sheep', make_sound_method=bah)
@@ -71,7 +71,7 @@ Please consider the differences in the following calls:
 
 
 Excercise: DEC00: Implement a simple strategy pattern
----------------------------------------------------
+-------------------------------------------------------
 
 Following the example above, implement a simple class that will realize the Strategy pattern.
 
@@ -87,7 +87,7 @@ To see some real benefit from passing functions as arguments to other functions,
 Tasks
 ++++++++
 
-Write an implementation of a wait_until function according to the following docstring
+Write an implementation of a wait_until function according to the following docstring.
 
 .. code-block:: python
 
@@ -113,5 +113,130 @@ Write an implementation of a wait_until function according to the following docs
 .. hint::
 
     Use the method :py:func:`time.time` to get the current time.
+    To simulate a condition function that is fulfilled after some time use :py:func:`time.sleep`
+
 
 :ref:`DEC01_solution`
+
+
+Functions defined within another function
+----------------------------------------------
+
+Python allows you to define a function within another function:
+
+.. code-block:: python
+
+    def outer_function(filter):
+
+        def inner_function():
+            print("Inside inner function")
+
+        inner_function()
+
+This can be used e.g. for a better code isolation (the inner function has a limited scope) or to create decorators.
+
+Function decorators
+------------------------
+
+A function decorator is a wrapper that modifies the behavior of the wrapped function, e.g. by adding some additional
+code before and after the function's execution. The decorator does not require any modifications to the existing code.
+
+A practical example may be logging of the code execution or checking some additional requirements before / after the function is executed.
+
+.. code-block:: python
+
+
+    from functools import wraps
+
+    def verbose(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            print("{} function starts".format(func.__name__))
+            result = func(*args, **kwargs)
+            print("{} function finished".format(func.__name__))
+            return result
+        return wrapper
+
+
+
+    @verbose
+    def test_step_1():
+        print("Do something")
+
+
+Stacked decorators
++++++++++++++++++++++
+
+Decorators can be also stacked.
+
+.. code-block:: python
+
+    @teststep
+    @requires_login
+    def some_test_step():
+        print("Hi!")
+
+
+Decorators with parameters
+++++++++++++++++++++++++++++++++
+
+But...
+
+.. image:: img\deeper.jpg
+
+Behavior of decorators can also be modified by parameters.
+To create such a parameterized decorator, create another function that wraps the decorator and accepts some parameter.
+
+Consider the example:
+
+.. code-block:: python
+
+
+    def outer_decorator(some_parameter):
+        def real_decorator(func):
+            def wrapper(*args, **kwargs):
+                # inner function uses the parameter from the outer-most function
+                print("Decorator got the parameter: {}".format(some_parameter))
+                print("Decorated function starts")
+                result = func(*args, **kwargs)
+                print("Decorated function finished.")
+                return result
+            return wrapper
+        return real_decorator
+
+
+    @outer_decorator("Some parameter")
+    def test_step():
+        print("Do something")
+
+
+    test_step()
+
+
+
+
+
+Excercise: DEC02: Function decorator with parameters
+---------------------------------------------------------------
+
+Write a decorator, that will enclose the string returned by the decorated function with html tags.
+The decorator will use a parameter, so this requries a a 3-level structure like in the example above.
+
+The execution of ``greet`` function decorated like this:
+
+.. code-block:: python
+
+    @tags('div')
+    @tags('p')
+    @tags('span')
+    def greet(name):
+        return "Hello " + name
+
+    print(greet("My Friend"))
+
+should return the string:
+
+``<div><p><span>Hello My Friend</span></p></div>``
+
+
+:ref:`DEC02_solution`

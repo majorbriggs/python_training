@@ -29,7 +29,7 @@ If you want to use both the index, and the value, use ``enumerate()`` with unpac
             print("Value on index {0} is {1}".format(index, value))
 
 
-If you want to iterate over the items of two lists at the same time, use ``zip()`` (remember by thinking of a zipper, as used in clothing)
+If you want to iterate over the items of two lists at the same time, use ``zip()`` (like in a zipper)
 
     .. code-block:: python
 

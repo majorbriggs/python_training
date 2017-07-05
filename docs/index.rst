@@ -14,13 +14,14 @@ Contents:
    intro
    environment
    project_structure
-   builtins
    strings
+   builtins
    files
    regular_expressions
    requests
    api
    arguments
+   classes
    gotchas
    decorators
    magic_methods

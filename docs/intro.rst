@@ -14,8 +14,8 @@ Requirements
 
 Before taking part in the training, make sure to download and install the following tools (available in Software Center)
 
-- Python 3.5.2
-- PyCharm 2016.1
+- Python 3.6
+- PyCharm 2017.x
 - Git
 
 
@@ -26,7 +26,7 @@ After you installed Python and PyCharm:
 
 #. Check Python installation
     - open the command line and type ``python`` or ``py -3`` if you have python 2.x installed alonside.
-    - Check that Python **3.5.2** started
+    - Check that Python **3.6** started
     - Close the interpreter by pressing ``Ctrl+Z`` and ``Enter``
 
 #. Configure PyCharm and check auto-completion.
@@ -36,7 +36,7 @@ After you installed Python and PyCharm:
     (to ``C:\Program Files (x86)\JetBrains\PyCharm Community Edition 2016.1.4\bin\pycharm.exe``)
     - Open PyCharm
     - Create new project.
-    - Go to Setting->Project: ... -> Project interpeter and set Python 3.5.2 as project interpeter
+    - Go to Setting->Project: ... -> Project interpeter and set Python 3.6 as project interpeter
 
         .. image:: img/select_interpreter.png
 
@@ -54,7 +54,7 @@ After you installed Python and PyCharm:
 Python 3.x vs 2.x
 -----------------------
 
-This training is based on **Python 3.5.2** and the examples may not work with the previous versions of Python, especially with Python 2.x. We will not cover the differences or incompatibilities between the versions 2 and 3 in details.
+This training is based on **Python 3.6** and the examples may not work with the previous versions of Python, especially with Python 2.x. We will not cover the differences or incompatibilities between the versions 2 and 3 in details.
 Following what the official wiki states:
 
 .. pull-quote::
