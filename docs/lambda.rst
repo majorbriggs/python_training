@@ -55,7 +55,8 @@ In our test automation frameworks, we are using lambda expressions for condition
 
 .. code-block:: python
 
-    assertion(lambda: self.ui_table().get_row_count() == count, msg=f'Agency User List should have {count} rows')
+    assertion(callable_condition=lambda: self.ui_table().get_row_count() == count,
+                msg=f'Agency User List should have {count} rows')
 
 The assertion function would have an implementation similar to:
 

@@ -31,7 +31,7 @@ After you installed Python and PyCharm:
 
 #. Configure PyCharm and check auto-completion.
 
-    - Install PyCharm 2016.x from Software Center
+    - Install PyCharm 2016.x 64 bit from Software Center
     - After installation it's not available through the search in Start Menu. Create a shortcut on the desktop manually
     (to ``C:\Program Files (x86)\JetBrains\PyCharm Community Edition 2016.1.4\bin\pycharm.exe``)
     - Open PyCharm
