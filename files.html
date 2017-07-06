@@ -8,12 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Working with files &mdash; Python Training 0.1 documentation</title>
+  <title>Working with files &mdash; Python Training 0.2 documentation</title>
   
 
   
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
   
 
   
@@ -35,9 +37,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/>
+    <link rel="top" title="Python Training 0.2 documentation" href="index.html"/>
         <link rel="next" title="Regular expressions" href="regular_expressions.html"/>
-        <link rel="prev" title="String formatting" href="strings.html"/> 
+        <link rel="prev" title="Built-in types - good practices" href="builtins.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -46,6 +48,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -86,12 +89,15 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Working with files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#opening-a-file">Opening a file</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#arguments-of-open-function">Arguments of <code class="docutils literal"><span class="pre">open()</span></code> function</a></li>
@@ -107,8 +113,11 @@
 <li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes and Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">Lambda expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic_methods.html">Magic methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
@@ -124,8 +133,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Python Training</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python Training</a>
+        
       </nav>
 
 
@@ -134,23 +145,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Working with files</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Working with files</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/files.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/files.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -162,7 +190,7 @@
 Python comes with a lot of convenient tool to handle these.</p>
 <div class="section" id="opening-a-file">
 <h2>Opening a file<a class="headerlink" href="#opening-a-file" title="Permalink to this headline">¶</a></h2>
-<p>Python has a built in function <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#open" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">open()</span></code></a> that allows you to create a file object like:</p>
+<p>Python has a built in function <code class="xref py py-func docutils literal"><span class="pre">open()</span></code> that allows you to create a file object like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some_file.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -170,7 +198,7 @@ Python comes with a lot of convenient tool to handle these.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>It is good practice to use the <a class="reference external" href="https://docs.python.org/3.5/reference/compound_stmts.html#with" title="(in Python v3.5)"><code class="xref std std-keyword docutils literal"><span class="pre">with</span></code></a> keyword when using file objects. This has the advantage that the file is properly closed after its suite finishes, even if an exception is raised on the way.</p>
+<p>It is good practice to use the <code class="xref std std-keyword docutils literal"><span class="pre">with</span></code> keyword when using file objects. This has the advantage that the file is properly closed after its suite finishes, even if an exception is raised on the way.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some_file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">f_in</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="c1"># do some operations</span>
@@ -188,7 +216,7 @@ The second argument is another string containing a few characters describing the
 <li><code class="docutils literal"><span class="pre">'a'</span></code> opens the file for appending; any data written to the file is automatically added to the end.</li>
 <li><code class="docutils literal"><span class="pre">'r+'</span></code> opens the file for both reading and writing</li>
 </ul>
-<p>if the argument is ommited, &#8216;r&#8217; is assumed</p>
+<p>if the argument is ommited, ‘r’ is assumed</p>
 <p>Normally, files are opened in text mode, that means, you read and write strings from and to the file, which are encoded in a specific encoding. If encoding is not specified, the default is platform dependent</p>
 <p><code class="docutils literal"><span class="pre">'b'</span></code> appended to the mode opens the file in binary mode: now the data is read and written in the form of bytes objects. This mode should be used for all files that don’t contain text.</p>
 <p>Files can be opened in different modes</p>
@@ -196,13 +224,12 @@ The second argument is another string containing a few characters describing the
 </div>
 <div class="section" id="opening-multiple-files-at-once">
 <h2>Opening multiple files at once<a class="headerlink" href="#opening-multiple-files-at-once" title="Permalink to this headline">¶</a></h2>
-<p>With &#8220;with&#8221; you can also open mulitple files at once, by separating the function calls with a coma. It&#8217;s an easy way to do file processing (reading from one file, writing to another)</p>
+<p>With “with” you can also open mulitple files at once, by separating the function calls with a coma. It’s an easy way to do file processing (reading from one file, writing to another)</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">txt</span> <span class="o">=</span> <span class="s1">&#39;some text&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">newfile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">oldfile</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">infile</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
-            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">txt</span><span class="p">)]</span> <span class="o">+</span> <span class="s1">&#39; - Truly a great person!</span><span class="se">\n</span><span class="s1">&#39;</span>
-        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="#fil00"><span class="std std-ref">Excercise FIL00: Read/write to a file</span></a> for a short excercise</p>
@@ -210,10 +237,10 @@ The second argument is another string containing a few characters describing the
 <div class="section" id="working-with-paths">
 <h2>Working with paths<a class="headerlink" href="#working-with-paths" title="Permalink to this headline">¶</a></h2>
 <p>File operations often require some manipulation of disk paths to create the path string to the required input or output file.
-In such cases, the module <a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#module-os.path" title="(in Python v3.5)"><code class="xref py py-mod docutils literal"><span class="pre">os.path</span></code></a> comes in handy. Here are some functions that you might see in use more than often.</p>
-<p><a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.join" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">os.path.join()</span></code></a>: creates a correct path string from a list of strings.The path created with <a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.join" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">os.path.join()</span></code></a> will work regardless the operating system. (On Windows paths are created with <code class="docutils literal"><span class="pre">'\'</span></code> while on Linux with <code class="docutils literal"><span class="pre">'/'</span></code></p>
-<p><a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.abspath" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">os.path.abspath()</span></code></a> returns the absolute path of a file given with a relative path</p>
-<p><a class="reference external" href="https://docs.python.org/3.5/library/os.path.html#os.path.dirname" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">os.path.dirname()</span></code></a> returns the path to directory of a filename given as argument</p>
+In such cases, the module <code class="xref py py-mod docutils literal"><span class="pre">os.path</span></code> comes in handy. Here are some functions that you might see in use more than often.</p>
+<p><code class="xref py py-func docutils literal"><span class="pre">os.path.join()</span></code>: creates a correct path string from a list of strings.The path created with <code class="xref py py-func docutils literal"><span class="pre">os.path.join()</span></code> will work regardless the operating system. (On Windows paths are created with <code class="docutils literal"><span class="pre">'\'</span></code> while on Linux with <code class="docutils literal"><span class="pre">'/'</span></code></p>
+<p><code class="xref py py-func docutils literal"><span class="pre">os.path.abspath()</span></code> returns the absolute path of a file given with a relative path</p>
+<p><code class="xref py py-func docutils literal"><span class="pre">os.path.dirname()</span></code> returns the path to directory of a filename given as argument</p>
 </div>
 <div class="section" id="iterating-over-a-file">
 <h2>Iterating over a file<a class="headerlink" href="#iterating-over-a-file" title="Permalink to this headline">¶</a></h2>
@@ -228,7 +255,7 @@ In such cases, the module <a class="reference external" href="https://docs.pytho
 <div class="section" id="excercise-fil00-read-write-to-a-file">
 <span id="fil00"></span><h2>Excercise FIL00: Read/write to a file<a class="headerlink" href="#excercise-fil00-read-write-to-a-file" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Write a script that will write 10 random integers from range 1-10 to a file. Use <a class="reference external" href="https://docs.python.org/3.5/library/random.html#random.randint" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">random.randint()</span></code></a> to generate the numbers</li>
+<li>Write a script that will write 10 random integers from range 1-10 to a file. Use <code class="xref py py-func docutils literal"><span class="pre">random.randint()</span></code> to generate the numbers</li>
 <li>Open two files (input, output) in a single <code class="docutils literal"><span class="pre">with</span></code> block. Read the numbers from the input file and write the letter <code class="docutils literal"><span class="pre">'X'</span></code> repeated the given number to the output file.</li>
 </ol>
 <div class="highlight-none"><div class="highlight"><pre><span></span>input.txt
@@ -252,15 +279,18 @@ XXX
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="regular_expressions.html" class="btn btn-neutral float-right" title="Regular expressions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="regular_expressions.html" class="btn btn-neutral float-right" title="Regular expressions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="strings.html" class="btn btn-neutral" title="String formatting" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="builtins.html" class="btn btn-neutral" title="Built-in types - good practices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -291,10 +321,11 @@ XXX
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1',
+            VERSION:'0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

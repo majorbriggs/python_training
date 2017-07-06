@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Classes and Object Oriented Programming &mdash; Python Training 0.2 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Training 0.2 documentation" href="index.html"/>
+        <link rel="next" title="Common Python gotchas" href="gotchas.html"/>
+        <link rel="prev" title="*args and **kwargs" href="arguments.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Training
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classes and Object Oriented Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-self-argument">The <code class="docutils literal"><span class="pre">self</span></code> argument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bonus-classmethod-and-staticmethod">Bonus: <code class="docutils literal"><span class="pre">&#64;classmethod</span></code> and <code class="docutils literal"><span class="pre">&#64;staticmethod</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">Lambda expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic_methods.html">Magic methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python Training</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Classes and Object Oriented Programming</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/classes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="classes-and-object-oriented-programming">
+<h1>Classes and Object Oriented Programming<a class="headerlink" href="#classes-and-object-oriented-programming" title="Permalink to this headline">¶</a></h1>
+<p>Classes and objects are the two main aspects of object oriented programming. In Python, everything is an object - even things
+like ints, and strings which in some other languages are called primitives.</p>
+<p>In Python (unlike in Java) multiple classes can be defined within one file on the same level.
+Classes can be defined within other classes or even within functions.</p>
+<p>Declaration of a simple class</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
+
+
+    <span class="k">def</span> <span class="nf">get_salary_after_tax</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">*</span> <span class="mf">0.71</span>
+
+<span class="n">emp</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">emp</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">emp</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">emp</span><span class="o">.</span><span class="n">get_salary_after_tax</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Python does not have typical access modifiers like <strong>private</strong> <strong>public</strong> or <strong>protected</strong>. All members of a class can be
+accessed, the responsibility to use them wisely lies on the developer. However, special naming conventions are used to indicate
+members that should be used only within the class or package (by using <code class="docutils literal"><span class="pre">_</span></code> as a prefix for protected and <code class="docutils literal"><span class="pre">__</span></code> for private members)</p>
+<p class="last">While using 3rd party libraries, you should definitely avoid accessing members with _ prefix, as they are not part of the API and may be changed in the future.
+This doesn’t apply to special methods like __str__ __class__ (see <a class="reference internal" href="magic_methods.html#magic"><span class="std std-ref">Magic methods</span></a>)</p>
+</div>
+<div class="section" id="the-self-argument">
+<h2>The <code class="docutils literal"><span class="pre">self</span></code> argument<a class="headerlink" href="#the-self-argument" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">self</span></code> as the first argument of each method in a class represents the instance of the class
+This instance is automatically passed to the method during the call.
+<code class="docutils literal"><span class="pre">self</span></code> is used to access any members of the instance from within the method.</p>
+</div>
+<div class="section" id="bonus-classmethod-and-staticmethod">
+<h2>Bonus: <code class="docutils literal"><span class="pre">&#64;classmethod</span></code> and <code class="docutils literal"><span class="pre">&#64;staticmethod</span></code><a class="headerlink" href="#bonus-classmethod-and-staticmethod" title="Permalink to this headline">¶</a></h2>
+<p>This is a larger topic, but just to give you a glimpse</p>
+<p><code class="docutils literal"><span class="pre">&#64;staticmethod</span></code>
+Methods decorated as staticmethods do not know anything about the class of instance they are called on, they do not operate on
+the fields of the class</p>
+<p><code class="docutils literal"><span class="pre">&#64;classmethod</span></code>
+Instead of the instance of the class (<code class="docutils literal"><span class="pre">self</span></code>), these methods get the <strong>class</strong> itself as the first parameter.
+They have access to class members via <code class="docutils literal"><span class="pre">cls</span></code> argument.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
+
+
+    <span class="k">def</span> <span class="nf">get_salary_after_tax</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">*</span> <span class="mf">0.71</span> <span class="c1">#  this needs self to access instance members</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">this_does_not_have_self</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>  <span class="c1"># this method belongs to the class, but do not have access to instance or class fields</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">this_method_gets_the_class_and_not_the_instance</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;This is a classmethod of class {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gotchas.html" class="btn btn-neutral float-right" title="Common Python gotchas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="arguments.html" class="btn btn-neutral" title="*args and **kwargs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Piotr Baranowski.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Decorators &mdash; Python Training 0.2 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Training 0.2 documentation" href="index.html"/>
+        <link rel="next" title="Lambda expressions" href="lambda.html"/>
+        <link rel="prev" title="Common Python gotchas" href="gotchas.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Training
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes and Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#functions-are-objects">Functions are objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#excercise-dec00-implement-a-simple-strategy-pattern">Excercise: DEC00: Implement a simple strategy pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#excercise-dec01-functions-are-objects-wait-until-method">Excercise: DEC01: Functions are objects - <code class="docutils literal"><span class="pre">wait_until</span></code> method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions-defined-within-another-function">Functions defined within another function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-decorators">Function decorators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stacked-decorators">Stacked decorators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decorators-with-parameters">Decorators with parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#excercise-dec02-function-decorator-with-parameters">Excercise: DEC02: Function decorator with parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">Lambda expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic_methods.html">Magic methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python Training</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Decorators</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/decorators.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="decorators">
+<h1>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h1>
+<p>Decorators allow to dynamically extend the behavior of a function or functions they are applied to, without the need to
+modify the function itself. To understand how they are implemented in Python, let’s start with some introductory concepts.</p>
+<div class="section" id="functions-are-objects">
+<h2>Functions are objects<a class="headerlink" href="#functions-are-objects" title="Permalink to this headline">¶</a></h2>
+<p>Everything is an object in Python, even types like int, str, or <em>functions</em> are objects. We will concentrate now on consequences of the latter.</p>
+<p>It is often said that functions are <strong>first class objects</strong> in Python, which means that there are no restrictions on their usage as objects.
+As such, they can be created, destroyed, passed as an argument or returned by another function with a <code class="xref std std-keyword docutils literal"><span class="pre">return</span></code> statement.</p>
+<p>Let’s consider the following example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">make_sound_method</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_sound</span> <span class="o">=</span> <span class="n">make_sound_method</span>
+
+
+    <span class="k">def</span> <span class="nf">quack</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Quack!&#39;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">moo</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Moooo!&#39;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">bah</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Bah!&#39;</span><span class="p">)</span>
+
+
+<span class="n">bah</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Sheep&#39;</span><span class="p">,</span> <span class="n">make_sound_method</span><span class="o">=</span><span class="n">bah</span><span class="p">)</span>
+
+<span class="n">bah</span><span class="o">.</span><span class="n">make_sound</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>The above is an example of <strong>Strategy</strong> design pattern. In this pattern:</p>
+<ul class="last simple">
+<li>there is a set of predefined algorithms (here different sound methods, <code class="docutils literal"><span class="pre">moo</span></code>, <code class="docutils literal"><span class="pre">quack</span></code>, <code class="docutils literal"><span class="pre">bah</span></code>)</li>
+<li>the object has a “placeholder” field - a method in its interface, that can execute different algoritms (here <code class="docutils literal"><span class="pre">make_sound()</span></code>,</li>
+<li>The algorithm that is used on call of the method is selected from the set of predefined algorithms on runtime.</li>
+</ul>
+</div>
+<p>As you see, any function can be used as an object (for example to assign it to some other variable), by refering to it without the parentheses ().</p>
+<p>Please consider the differences in the following calls:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello&quot;</span>
+
+
+<span class="n">hello</span> <span class="o">=</span> <span class="n">some_function</span><span class="p">()</span>
+<span class="n">hello_func</span> <span class="o">=</span> <span class="n">some_function</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
+<span class="c1"># -&gt; Hello</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">hello_func</span><span class="p">)</span>
+<span class="c1"># -&gt; &lt;function some_function at 0x01290DF8&gt;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">hello_func</span><span class="p">())</span>
+<span class="c1"># -&gt; Hello</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="excercise-dec00-implement-a-simple-strategy-pattern">
+<h2>Excercise: DEC00: Implement a simple strategy pattern<a class="headerlink" href="#excercise-dec00-implement-a-simple-strategy-pattern" title="Permalink to this headline">¶</a></h2>
+<p>Following the example above, implement a simple class that will realize the Strategy pattern.</p>
+<p>Write three functions that will simulate different processing algorithms (they can all be a single print() statement)
+The class should have one method “process” which will be initiated with one of the three possible algorithms</p>
+</div>
+<div class="section" id="excercise-dec01-functions-are-objects-wait-until-method">
+<h2>Excercise: DEC01: Functions are objects - <code class="docutils literal"><span class="pre">wait_until</span></code> method<a class="headerlink" href="#excercise-dec01-functions-are-objects-wait-until-method" title="Permalink to this headline">¶</a></h2>
+<p>To see some real benefit from passing functions as arguments to other functions, let’s implement a custom <code class="docutils literal"><span class="pre">wait_until()</span></code> function that will check a given condition until timeout is expired.</p>
+<div class="section" id="tasks">
+<h3>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>Write an implementation of a wait_until function according to the following docstring.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wait_until</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wait until the condition returned by &#39;condition&#39; function is fulfilled,</span>
+<span class="sd">    or the timeout is expired. The condition should be checked every 100ms</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        condition: a function that checks a condition and returns True or False</span>
+<span class="sd">        timeout: maximal timeout after which the function will raise TimeoutException</span>
+<span class="sd">                or return False (if raise_exception is False)</span>
+<span class="sd">        msg: message added to the TimeoutException</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        True when the condition is fulfilled within the timeout,</span>
+<span class="sd">        False when the condition is not fulfilled within the timeout</span>
+<span class="sd">                and &#39;raise_exception&#39; is False</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        TimeoutException: if raise_exception is True</span>
+<span class="sd">                        and the condition is not fulfilled within timeout</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Use the method <code class="xref py py-func docutils literal"><span class="pre">time.time()</span></code> to get the current time.
+To simulate a condition function that is fulfilled after some time use <code class="xref py py-func docutils literal"><span class="pre">time.sleep()</span></code></p>
+</div>
+<p><a class="reference internal" href="solutions.html#dec01-solution"><span class="std std-ref">Solution to DEC01</span></a></p>
+</div>
+</div>
+<div class="section" id="functions-defined-within-another-function">
+<h2>Functions defined within another function<a class="headerlink" href="#functions-defined-within-another-function" title="Permalink to this headline">¶</a></h2>
+<p>Python allows you to define a function within another function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">outer_function</span><span class="p">(</span><span class="nb">filter</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">inner_function</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Inside inner function&quot;</span><span class="p">)</span>
+
+    <span class="n">inner_function</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This can be used e.g. for a better code isolation (the inner function has a limited scope) or to create decorators.</p>
+</div>
+<div class="section" id="function-decorators">
+<h2>Function decorators<a class="headerlink" href="#function-decorators" title="Permalink to this headline">¶</a></h2>
+<p>A function decorator is a wrapper that modifies the behavior of the wrapped function, e.g. by adding some additional
+code before and after the function’s execution. The decorator does not require any modifications to the existing code.</p>
+<p>A practical example may be logging of the code execution or checking some additional requirements before / after the function is executed.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{} function starts&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{} function finished&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+
+<span class="nd">@verbose</span>
+<span class="k">def</span> <span class="nf">test_step_1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Do something&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="stacked-decorators">
+<h3>Stacked decorators<a class="headerlink" href="#stacked-decorators" title="Permalink to this headline">¶</a></h3>
+<p>Decorators can be also stacked.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@teststep</span>
+<span class="nd">@requires_login</span>
+<span class="k">def</span> <span class="nf">some_test_step</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hi!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="decorators-with-parameters">
+<h3>Decorators with parameters<a class="headerlink" href="#decorators-with-parameters" title="Permalink to this headline">¶</a></h3>
+<p>But…</p>
+<img alt="_images/deeper.jpg" src="_images/deeper.jpg" />
+<p>Behavior of decorators can also be modified by parameters.
+To create such a parameterized decorator, create another function that wraps the decorator and accepts some parameter.</p>
+<p>Consider the example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">outer_decorator</span><span class="p">(</span><span class="n">some_parameter</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">real_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="c1"># inner function uses the parameter from the outer-most function</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Decorator got the parameter: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">some_parameter</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Decorated function starts&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Decorated function finished.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">real_decorator</span>
+
+
+<span class="nd">@outer_decorator</span><span class="p">(</span><span class="s2">&quot;Some parameter&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_step</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Do something&quot;</span><span class="p">)</span>
+
+
+<span class="n">test_step</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="excercise-dec02-function-decorator-with-parameters">
+<h2>Excercise: DEC02: Function decorator with parameters<a class="headerlink" href="#excercise-dec02-function-decorator-with-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Write a decorator, that will enclose the string returned by the decorated function with html tags.
+The decorator will use a parameter, so this requries a a 3-level structure like in the example above.</p>
+<p>The execution of <code class="docutils literal"><span class="pre">greet</span></code> function decorated like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@tags</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<span class="nd">@tags</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="nd">@tags</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">name</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">&quot;My Friend&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>should return the string:</p>
+<p><code class="docutils literal"><span class="pre">&lt;div&gt;&lt;p&gt;&lt;span&gt;Hello</span> <span class="pre">My</span> <span class="pre">Friend&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</span></code></p>
+<p><a class="reference internal" href="solutions.html#dec02-solution"><span class="std std-ref">Solution to DEC02</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lambda.html" class="btn btn-neutral float-right" title="Lambda expressions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gotchas.html" class="btn btn-neutral" title="Common Python gotchas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Piotr Baranowski.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

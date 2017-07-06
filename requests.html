@@ -8,12 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>HTTP in Python with requests &mdash; Python Training 0.1 documentation</title>
+  <title>HTTP in Python with requests &mdash; Python Training 0.2 documentation</title>
   
 
   
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
   
 
   
@@ -35,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/>
+    <link rel="top" title="Python Training 0.2 documentation" href="index.html"/>
         <link rel="next" title="Working with APIs" href="api.html"/>
         <link rel="prev" title="Regular expressions" href="regular_expressions.html"/> 
 
@@ -46,6 +48,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -86,12 +89,15 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a><ul>
@@ -132,8 +138,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes and Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">Lambda expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic_methods.html">Magic methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
@@ -149,8 +158,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Python Training</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python Training</a>
+        
       </nav>
 
 
@@ -159,30 +170,47 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/requests.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/requests.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
   <div class="section" id="http-in-python-with-requests">
-<h1>HTTP in Python with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a><a class="headerlink" href="#http-in-python-with-requests" title="Permalink to this headline">¶</a></h1>
+<h1>HTTP in Python with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.18.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a><a class="headerlink" href="#http-in-python-with-requests" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="short-intro-to-http">
 <h2>Short intro to HTTP<a class="headerlink" href="#short-intro-to-http" title="Permalink to this headline">¶</a></h2>
 <p>Each time a browser needs to fetch a file from a server it uses a protocol called HTTP (HyperText Transfer Protocol).
@@ -194,7 +222,7 @@ In HTTP the client sends a request for some resource and receives a response fro
 <div><ol class="arabic simple">
 <li>A Request-line consisting the request method</li>
 <li>Zero or more header lines followed by a CRLF (end of the line characters basically)</li>
-<li>An empty line indicating the end of the request&#8217;s header</li>
+<li>An empty line indicating the end of the request’s header</li>
 <li>Optionally a message-body</li>
 </ol>
 </div></blockquote>
@@ -269,9 +297,9 @@ Connection: close
 </div>
 </div>
 <div class="section" id="requests-module">
-<h2><a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a> module<a class="headerlink" href="#requests-module" title="Permalink to this headline">¶</a></h2>
-<p>To work with HTTP requests we will use the third-party library <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a>.
-It&#8217;s not a part of the standard library, but currently it&#8217;s the standard way to go about HTTP with Python.</p>
+<h2><a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.18.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a> module<a class="headerlink" href="#requests-module" title="Permalink to this headline">¶</a></h2>
+<p>To work with HTTP requests we will use the third-party library <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.18.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a>.
+It’s not a part of the standard library, but currently it’s the standard way to go about HTTP with Python.</p>
 <p>It can be installed with pip by typing:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>python3 -m pip install requests
 </pre></div>
@@ -281,7 +309,7 @@ It&#8217;s not a part of the standard library, but currently it&#8217;s the stan
 </pre></div>
 </div>
 <p>if pip for the right version of python is available in your PATH</p>
-<p>Try to install <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a> within your virtual environment only.</p>
+<p>Try to install <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.18.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a> within your virtual environment only.</p>
 <div class="section" id="sending-a-simple-get-request">
 <h3>Sending a simple GET request<a class="headerlink" href="#sending-a-simple-get-request" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -295,13 +323,13 @@ It&#8217;s not a part of the standard library, but currently it&#8217;s the stan
 </div>
 <div class="section" id="authentication">
 <h3>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a> support a wide variety of authentication methods. For the training we will need only the basic HTTP Authentication</p>
+<p><a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.18.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a> support a wide variety of authentication methods. For the training we will need only the basic HTTP Authentication</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">requests.auth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
 
 <span class="n">auth</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;my_username&#39;</span><span class="p">,</span> <span class="s1">&#39;my_password&#39;</span><span class="p">)</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Go to <a class="reference internal" href="#req00"><span class="std std-ref">Excercise REQ00: Basic HTTP Authentication</span></a></p>
@@ -332,7 +360,7 @@ It&#8217;s not a part of the standard library, but currently it&#8217;s the stan
 <h3>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Send a GET request to one of LSYP intranet pages. Use <code class="docutils literal"><span class="pre">HTTPBasicAuth</span></code> object to to provide your credentials.</li>
-<li>You can store them temporarily in an external module and import to your script as variables or get from the user with <a class="reference external" href="https://docs.python.org/3.5/library/functions.html#input" title="(in Python v3.5)"><code class="xref py py-func docutils literal"><span class="pre">input()</span></code></a></li>
+<li>You can store them temporarily in an external module and import to your script as variables or get from the user with <code class="xref py py-func docutils literal"><span class="pre">input()</span></code></li>
 </ol>
 <p><a class="reference internal" href="solutions_proxy.html#req00-solution"><span class="std std-ref">Solution to REQ00</span></a></p>
 </div>
@@ -340,7 +368,7 @@ It&#8217;s not a part of the standard library, but currently it&#8217;s the stan
 <div class="section" id="excercise-req01-exploiting-a-blind-sql-injection-vulnerability">
 <h2>Excercise REQ01: Exploiting a Blind SQL Injection vulnerability<a class="headerlink" href="#excercise-req01-exploiting-a-blind-sql-injection-vulnerability" title="Permalink to this headline">¶</a></h2>
 <p>The service <a class="reference external" href="http://overthewire.org/wargames/">http://overthewire.org/wargames/</a> offers a large set of so called wargames, i.e. challenges that help you to learn and practice various IT-security concepts.</p>
-<p>The series &#8220;natas&#8221; concentrates on web applications. To enter each of the levels you need a password that is obtained by solving the previous puzzle.
+<p>The series “natas” concentrates on web applications. To enter each of the levels you need a password that is obtained by solving the previous puzzle.
 Today we will solve the level 16 which deals with the vulnerability called Blind SQL Injection</p>
 <div class="section" id="what-is-an-sql-injection">
 <h3>What is an SQL Injection?<a class="headerlink" href="#what-is-an-sql-injection" title="Permalink to this headline">¶</a></h3>
@@ -351,7 +379,7 @@ Today we will solve the level 16 which deals with the vulnerability called Blind
 </div></blockquote>
 <p>Practically, if a web application contains an entry field, from which the str  ing is directly put into an SQL query,
 there is a risk, that the user would escape the query and execute some logic or operations that were not originally intended by the author of the application.</p>
-<p>Let&#8217;s consider the following query:</p>
+<p>Let’s consider the following query:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">statement</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM users WHERE name = &#39;&quot;</span> <span class="o">+</span> <span class="n">userName</span> <span class="o">+</span> <span class="s2">&quot;&#39;;&quot;</span>
 </pre></div>
 </div>
@@ -359,11 +387,11 @@ there is a risk, that the user would escape the query and execute some logic or 
 <div class="highlight-none"><div class="highlight"><pre><span></span>&#39; OR &#39;1&#39;=&#39;1
 </pre></div>
 </div>
-<p>the &#8220;WHERE&#8221; section of the query will always return True, and thus - the results of the SELECT will be returned no matter what the original condition was (in this case that the username must be known)</p>
+<p>the “WHERE” section of the query will always return True, and thus - the results of the SELECT will be returned no matter what the original condition was (in this case that the username must be known)</p>
 </div>
 <div class="section" id="blind-sql-injection">
 <h3>Blind SQL Injection<a class="headerlink" href="#blind-sql-injection" title="Permalink to this headline">¶</a></h3>
-<p>Not always the result of a SELECT query are printed directly to on the website. Sometimes it&#8217;s only some other information like whether or not a user with the given username exists.
+<p>Not always the result of a SELECT query are printed directly to on the website. Sometimes it’s only some other information like whether or not a user with the given username exists.
 In such case we can obtain the sensitive information indirectly by exploiting the so called Blind SQL Injection.</p>
 <p>The vulnerable webpage from natas15 uses the following PHP code for executing the query:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -387,13 +415,13 @@ In such case we can obtain the sensitive information indirectly by exploiting th
 <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 </div>
-<p>As we can see, the &#8220;username&#8221; variable is inserted directly from the POST request and that creates an SQL injection vulnerability.
+<p>As we can see, the “username” variable is inserted directly from the POST request and that creates an SQL injection vulnerability.
 However the results of the query to the database are not printed anywhere.</p>
 <p>Is the information that the given user exists enough to obtain his password?</p>
 <div class="section" id="sql-like-operator">
 <h4>SQL LIKE operator<a class="headerlink" href="#sql-like-operator" title="Permalink to this headline">¶</a></h4>
 <p>The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.</p>
-<p>The following SQL statement selects all customers with a City starting with the letter &#8220;s&#8221;:
+<p>The following SQL statement selects all customers with a City starting with the letter “s”:
 Example:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Customers</span>
 <span class="k">WHERE</span> <span class="n">City</span> <span class="k">LIKE</span> <span class="s1">&#39;s%&#39;</span><span class="p">;</span>
@@ -407,7 +435,7 @@ Use LIKE BINARY to get a case-sensitive results.</p>
 </div>
 <div class="section" id="malicious-query">
 <h4>Malicious query<a class="headerlink" href="#malicious-query" title="Permalink to this headline">¶</a></h4>
-<p>By combining the original query that checks if the user exists with the additional condition on the password, we can create an injection that will result in the text &#8220;This user exists&#8221;
+<p>By combining the original query that checks if the user exists with the additional condition on the password, we can create an injection that will result in the text “This user exists”
 displayed only if the user exists AND its password starts with the given letter.</p>
 </div>
 </div>
@@ -416,8 +444,8 @@ displayed only if the user exists AND its password starts with the given letter.
 <ol class="arabic simple">
 <li>Write a Python script that will find the password for the user natas16</li>
 <li>Assume that the password is 32 characters long and contains numbers and upper and lower case letters.</li>
-<li>Use Blind SQL injection with LIKE BINARY operator to check if the user&#8217;s password starts with some letter.</li>
-<li>After each request check if the response contains the expected text, &#8220;This user exists.&#8221;</li>
+<li>Use Blind SQL injection with LIKE BINARY operator to check if the user’s password starts with some letter.</li>
+<li>After each request check if the response contains the expected text, “This user exists.”</li>
 <li>If a single check is successful, move on trying to guess the next letter.</li>
 <li>Print the whole password on the screen and try to login to the next level.</li>
 </ol>
@@ -431,16 +459,16 @@ In this excercise we will hijack a session by executing a brute force attack on 
 <div class="section" id="what-is-a-session-id">
 <h3>What is a session ID?<a class="headerlink" href="#what-is-a-session-id" title="Permalink to this headline">¶</a></h3>
 <p>A session ID in network communication is a piece of data used to identify a series of related message exchanges between the client and the server.
-A Session ID is used to identify a logged in user and thus, when stolen, can be used to obtain the user&#8217;s privileges.
+A Session ID is used to identify a logged in user and thus, when stolen, can be used to obtain the user’s privileges.
 In real systems, session ids are long, randomly generated values to prevent session hijacking by guessing or brute force attacks.</p>
 <p>However in this excercise we will simulate an attack on a website that grants session ids as random numbers from a very limited pool.</p>
 <p>In PHP session id is stored read from a cookie value <code class="docutils literal"><span class="pre">PHPSESSID</span></code>.</p>
-<p>To send a cookie with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a>, use cookies parameter:</p>
+<p>To send a cookie with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.18.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a>, use cookies parameter:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="c1"># (...)</span>
 
-<span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;cookie_name&#39;</span><span class="p">,</span> <span class="s1">&#39;cookie_value&#39;</span><span class="p">})</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;cookie_name&#39;</span><span class="p">:</span> <span class="s1">&#39;cookie_value&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -463,15 +491,18 @@ In real systems, session ids are long, randomly generated values to prevent sess
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="api.html" class="btn btn-neutral float-right" title="Working with APIs" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api.html" class="btn btn-neutral float-right" title="Working with APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="regular_expressions.html" class="btn btn-neutral" title="Regular expressions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="regular_expressions.html" class="btn btn-neutral" title="Regular expressions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -502,10 +533,11 @@ In real systems, session ids are long, randomly generated values to prevent sess
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1',
+            VERSION:'0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

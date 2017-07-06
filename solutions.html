@@ -8,12 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Solutions &mdash; Python Training 0.1 documentation</title>
+  <title>Solutions &mdash; Python Training 0.2 documentation</title>
   
 
   
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
   
 
   
@@ -35,7 +37,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/> 
+    <link rel="top" title="Python Training 0.2 documentation" href="index.html"/>
+        <link rel="prev" title="Creating documentation with Sphinx" href="docs.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -44,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -63,7 +67,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -84,22 +88,67 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes and Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">Lambda expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic_methods.html">Magic methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Solutions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-fil00">Solution to FIL00</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#working-script">Working script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-req00">Solution to REQ00</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Working script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-req01">Solution to REQ01</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#malicious-query">Malicious query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Working script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-req02">Solution to REQ02</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Working script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-api00">Solution to API00</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Working script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-api01">Solution to API01</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-new-issue-with-a-custom-field">Create a new issue with a custom field</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Working script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-sub-task">Create a Sub-task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-dec01">Solution to DEC01</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Working script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-dec02">Solution to DEC02</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Working script</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -112,8 +161,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Python Training</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python Training</a>
+        
       </nav>
 
 
@@ -122,23 +173,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Solutions</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Solutions</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/solutions_proxy.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/solutions.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -185,7 +253,7 @@
 <span id="req01-solution"></span><h2>Solution to REQ01<a class="headerlink" href="#solution-to-req01" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="malicious-query">
 <h3>Malicious query<a class="headerlink" href="#malicious-query" title="Permalink to this headline">¶</a></h3>
-<p>The user input that would escape the original query, and add the additional condition on the password is (for the first letter assumed to be &#8220;A&#8221;):</p>
+<p>The user input that would escape the original query, and add the additional condition on the password is (for the first letter assumed to be “A”):</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="s1">&#39;natas16&quot; AND password LIKE BINARY &quot;A%&#39;</span>
 </pre></div>
 </div>
@@ -277,7 +345,7 @@
 <div class="section" id="create-a-new-issue-with-a-custom-field">
 <h3>Create a new issue with a custom field<a class="headerlink" href="#create-a-new-issue-with-a-custom-field" title="Permalink to this headline">¶</a></h3>
 <p>By looking at the response received with :py:meth`jira.JIRA.createmeta`</p>
-<p>we can see that the custom field &#8220;Start Date&#8221; has the name <code class="docutils literal"><span class="pre">customfield_10018</span></code></p>
+<p>we can see that the custom field “Start Date” has the name <code class="docutils literal"><span class="pre">customfield_10018</span></code></p>
 <div class="section" id="id5">
 <h4>Working script<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jira</span> <span class="kn">import</span> <span class="n">JIRA</span>
@@ -334,8 +402,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="solution-to-adv00">
-<span id="adv00-solution"></span><h2>Solution to ADV00<a class="headerlink" href="#solution-to-adv00" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-to-dec01">
+<span id="dec01-solution"></span><h2>Solution to DEC01<a class="headerlink" href="#solution-to-dec01" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
 <h3>Working script<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wait_until</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
@@ -373,12 +441,46 @@
 </div>
 </div>
 </div>
+<div class="section" id="solution-to-dec02">
+<span id="dec02-solution"></span><h2>Solution to DEC02<a class="headerlink" href="#solution-to-dec02" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>Working script<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tags</span><span class="p">(</span><span class="n">tag_name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">tags_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;{tag_name}&gt;{result}&lt;/{tag_name}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag_name</span><span class="o">=</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">tags_decorator</span>
+
+<span class="nd">@tags</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<span class="nd">@tags</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="nd">@tags</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+<span class="nd">@tags</span><span class="p">(</span><span class="s1">&#39;strong&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>print(greet(“My Friend”))</p>
+</div>
+</div>
 </div>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="docs.html" class="btn btn-neutral" title="Creating documentation with Sphinx" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -407,10 +509,11 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1',
+            VERSION:'0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

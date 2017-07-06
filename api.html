@@ -8,12 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Working with APIs &mdash; Python Training 0.1 documentation</title>
+  <title>Working with APIs &mdash; Python Training 0.2 documentation</title>
   
 
   
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
   
 
   
@@ -35,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Python Training 0.1 documentation" href="index.html"/>
+    <link rel="top" title="Python Training 0.2 documentation" href="index.html"/>
         <link rel="next" title="*args and **kwargs" href="arguments.html"/>
         <link rel="prev" title="HTTP in Python with requests" href="requests.html"/> 
 
@@ -46,6 +48,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -65,7 +68,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -86,12 +89,15 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
@@ -106,8 +112,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes and Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">Lambda expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic_methods.html">Magic methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
@@ -123,8 +132,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Python Training</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python Training</a>
+        
       </nav>
 
 
@@ -133,23 +144,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Working with APIs</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Working with APIs</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/api.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -173,9 +201,9 @@ The input and output format for the JIRA REST APIs is JSON.</p>
 </div></blockquote>
 </div>
 <div class="section" id="access-jira-api-with-requests">
-<h2>Access JIRA API with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a><a class="headerlink" href="#access-jira-api-with-requests" title="Permalink to this headline">¶</a></h2>
+<h2>Access JIRA API with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.18.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a><a class="headerlink" href="#access-jira-api-with-requests" title="Permalink to this headline">¶</a></h2>
 <p>JIRA API can be used by making HTTP requests and extracting the information from the JSON response.
-We&#8217;ll start with an example of such approach implemented with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.12.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a>. We use a publicly accessible JIRA instance of Apache project.</p>
+We’ll start with an example of such approach implemented with <a class="reference external" href="http://docs.python-requests.org/en/master/api/#module-requests" title="(in Requests v2.18.1)"><code class="xref py py-mod docutils literal"><span class="pre">requests</span></code></a>. We use a publicly accessible JIRA instance of Apache project.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://issues.apache.org/jira/rest/api/2/issue/ZOOKEEPER-2613&quot;</span>
@@ -250,9 +278,9 @@ The official Internet media type for JSON is application/json. JSON filenames us
 <h2>Language specific API wrappers<a class="headerlink" href="#language-specific-api-wrappers" title="Permalink to this headline">¶</a></h2>
 <p>As you could see in the previous examples, APIs can be accessed with any tool or language capable of sending HTTP requests.
 However in most cases it is convenient to simplify the access to an API by encapsulating the operations in some language specific library.
-That&#8217;s why many APIs have their language specific wrappers that allow you to work on Objects and methods insted of raw HTTP requests.</p>
-<p>There is a Python wrapper for JIRA REST API, named <a class="reference external" href="https://jira.readthedocs.io/en/master/api.html#module-jira" title="(in jira-python v1.0.7.dev20161112134044)"><code class="xref py py-mod docutils literal"><span class="pre">jira</span></code></a>.</p>
-<p>Install the module <a class="reference external" href="https://jira.readthedocs.io/en/master/api.html#module-jira" title="(in jira-python v1.0.7.dev20161112134044)"><code class="xref py py-mod docutils literal"><span class="pre">jira</span></code></a> within your virtual environment (using PyCharm or in the command line using <code class="docutils literal"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">jira</span></code>)</p>
+That’s why many APIs have their language specific wrappers that allow you to work on Objects and methods insted of raw HTTP requests.</p>
+<p>There is a Python wrapper for JIRA REST API, named <a class="reference external" href="https://jira.readthedocs.io/en/master/api.html#module-jira" title="(in jira-python v1.0.11.dev1)"><code class="xref py py-mod docutils literal"><span class="pre">jira</span></code></a>.</p>
+<p>Install the module <a class="reference external" href="https://jira.readthedocs.io/en/master/api.html#module-jira" title="(in jira-python v1.0.11.dev1)"><code class="xref py py-mod docutils literal"><span class="pre">jira</span></code></a> within your virtual environment (using PyCharm or in the command line using <code class="docutils literal"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">jira</span></code>)</p>
 <p>The analogous request for an issue, using the wrapper looks like so:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jira</span> <span class="kn">import</span> <span class="n">JIRA</span>
 
@@ -273,7 +301,7 @@ API wrappers offer many methods that significantly simplify the interaction with
 <div class="section" id="tasks">
 <h3>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Check the documentation of <a class="reference external" href="https://jira.readthedocs.io/en/master/api.html#module-jira" title="(in jira-python v1.0.7.dev20161112134044)"><code class="xref py py-mod docutils literal"><span class="pre">jira</span></code></a> to see how to execute a JQL query</li>
+<li>Check the documentation of <a class="reference external" href="https://jira.readthedocs.io/en/master/api.html#module-jira" title="(in jira-python v1.0.11.dev1)"><code class="xref py py-mod docutils literal"><span class="pre">jira</span></code></a> to see how to execute a JQL query</li>
 <li>Print the summaries of all found issues.</li>
 </ol>
 <p><a class="reference internal" href="solutions_proxy.html#api00-solution"><span class="std std-ref">Solution to API00</span></a></p>
@@ -283,15 +311,18 @@ API wrappers offer many methods that significantly simplify the interaction with
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="arguments.html" class="btn btn-neutral float-right" title="*args and **kwargs" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="arguments.html" class="btn btn-neutral float-right" title="*args and **kwargs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="requests.html" class="btn btn-neutral" title="HTTP in Python with requests" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="requests.html" class="btn btn-neutral" title="HTTP in Python with requests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -322,10 +353,11 @@ API wrappers offer many methods that significantly simplify the interaction with
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1',
+            VERSION:'0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

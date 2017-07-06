@@ -8,12 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to AF/P-Q Python Intermediate Training! &mdash; Python Training 0.1 documentation</title>
+  <title>Welcome to Python Training! &mdash; Python Training 0.2 documentation</title>
   
 
   
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
   
 
   
@@ -35,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Python Training 0.1 documentation" href="#"/>
+    <link rel="top" title="Python Training 0.2 documentation" href="#"/>
         <link rel="next" title="Introduction" href="intro.html"/> 
 
   
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -64,7 +67,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -85,19 +88,25 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requests.html">HTTP in Python with <code class="docutils literal"><span class="pre">requests</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Working with APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arguments.html">*args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes and Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">Lambda expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic_methods.html">Magic methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs.html">Creating documentation with <code class="docutils literal"><span class="pre">Sphinx</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
@@ -113,8 +122,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">Python Training</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Python Training</a>
+        
       </nav>
 
 
@@ -123,30 +134,47 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
-      
-    <li>Welcome to AF/P-Q Python Intermediate Training!</li>
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome to Python Training!</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-af-p-q-python-intermediate-training">
-<h1>Welcome to AF/P-Q Python Intermediate Training!<a class="headerlink" href="#welcome-to-af-p-q-python-intermediate-training" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="welcome-to-python-training">
+<h1>Welcome to Python Training!<a class="headerlink" href="#welcome-to-python-training" title="Permalink to this headline">¶</a></h1>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -158,9 +186,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="environment.html">Environment configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="environment.html#setting-environment-variables">Setting environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html#pip">pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="environment.html#pycharm-git-setup">PyCharm Git setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="environment.html#virtualenv">virtualenv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="environment.html#pip">pip</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="project_structure.html">Project structure</a><ul>
@@ -170,13 +198,17 @@
 <li class="toctree-l2"><a class="reference internal" href="project_structure.html#circular-imports">Circular imports</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#str-format-method"><code class="docutils literal"><span class="pre">str.format()</span></code> method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html#formatted-string-literals">Formatted string literals</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="builtins.html">Built-in types - good practices</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="builtins.html#iterating-over-a-list">Iterating over a list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="builtins.html#creating-a-dictionary-from-two-lists">Creating a dictionary from two lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="builtins.html#iterating-over-a-dictionary">Iterating over a dictionary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="strings.html">String formatting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Working with files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="files.html#opening-a-file">Opening a file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html#opening-multiple-files-at-once">Opening multiple files at once</a></li>
@@ -214,16 +246,33 @@
 <li class="toctree-l2"><a class="reference internal" href="arguments.html#unpacking-variables-to-function-arguments">Unpacking variables to function arguments</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes and Object Oriented Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#the-self-argument">The <code class="docutils literal"><span class="pre">self</span></code> argument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html#bonus-classmethod-and-staticmethod">Bonus: <code class="docutils literal"><span class="pre">&#64;classmethod</span></code> and <code class="docutils literal"><span class="pre">&#64;staticmethod</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="gotchas.html">Common Python gotchas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gotchas.html#what-exactly-are-variables-in-python">What exactly are variables in Python?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gotchas.html#mutable-default-arguments">Mutable default arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gotchas.html#boolean-expressions-and-logical-operators">Boolean expressions and logical operators</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="advanced.html#magic-methods-in-classes">Magic methods in classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced.html#functions-are-objects">Functions are objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced.html#excercise-adv00-functions-are-objects-wait-until-method">Excercise: ADV00: Functions are objects - <code class="docutils literal"><span class="pre">wait_until</span></code> method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#functions-are-objects">Functions are objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#excercise-dec00-implement-a-simple-strategy-pattern">Excercise: DEC00: Implement a simple strategy pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#excercise-dec01-functions-are-objects-wait-until-method">Excercise: DEC01: Functions are objects - <code class="docutils literal"><span class="pre">wait_until</span></code> method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#functions-defined-within-another-function">Functions defined within another function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#function-decorators">Function decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html#excercise-dec02-function-decorator-with-parameters">Excercise: DEC02: Function decorator with parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">Lambda expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lambda.html#lambda-expressions-in-test-automation">Lambda expressions in test automation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="magic_methods.html">Magic methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="magic_methods.html#string-representation-of-a-class">String representation of a class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="magic_methods.html#operator-overloading">Operator overloading</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a><ul>
@@ -240,7 +289,17 @@
 <li class="toctree-l2"><a class="reference internal" href="docs.html#excercise-doc00-analyze-the-training-docs-sources">Excercise DOC00: Analyze the training docs sources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="solutions.html#solution-to-fil00">Solution to FIL00</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solutions.html#solution-to-req00">Solution to REQ00</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solutions.html#solution-to-req01">Solution to REQ01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solutions.html#solution-to-req02">Solution to REQ02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solutions.html#solution-to-api00">Solution to API00</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solutions.html#solution-to-api01">Solution to API01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solutions.html#solution-to-dec01">Solution to DEC01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solutions.html#solution-to-dec02">Solution to DEC02</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -255,12 +314,15 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="intro.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="intro.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -292,10 +354,11 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1',
+            VERSION:'0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
