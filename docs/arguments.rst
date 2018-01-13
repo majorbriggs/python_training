@@ -6,8 +6,8 @@
 What are function arguments with an asterisk?
 ----------------------------------------------
 
-On definition of a function, the list arguments may contain elements with one or two asterisks (\*). Traditionally they are named ``args`` and ``kwargs`` respectively.
-``*args`` and ``**kwargs`` allow the function to accept variable number of arguments.
+The list of arguments of a function may contain elements with one or two asterisks (\*). Traditionally they are named ``args`` and ``kwargs`` respectively.
+``*args`` and ``**kwargs`` allow a function to accept variable number of arguments.
 
 Consider the example:
 
